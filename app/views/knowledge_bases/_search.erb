@@ -1,0 +1,14 @@
+<%= search_form_for @search, :html => { :id => 'search_form' , :class => 'search_form'}  do |f| %>
+  <div id="search_div" class="rounded_corners">
+    <div>
+      <h3>Search</h3>
+      <div class="search_div_seperator">
+        <%= label :knowledge_base, 'Question' %>
+        <%= f.text_field :question_cont, {:class => 'clearable'}%>
+      </div>    
+      <div class="search_actions">
+        <%= f.submit 'Search', :class => 'button' %>
+      </div>
+    </div>  
+  </div>
+<% end %>

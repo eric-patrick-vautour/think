@@ -1,0 +1,23 @@
+<h1>Knowledge Base</h1>
+<%= render "search" %>
+<br class="clearfloat" />
+<div class="results rounded_corners">
+  <div class="results_body">
+    <% if @knowledge_bases.blank? %>
+      <div class="results_no_results">No Search Results</div>
+    <% else %>
+      <table class="main_results results">
+        <tr>
+          <th><%= sort_link @search, :question, 'Question' %></th>
+          <th><%= sort_link @search, :answer, 'Answer' %></th>
+        </tr>
+        <% @knowledge_bases.each do |knowledge_base| %>
+          <tr>
+            <td class="clickable"><%= knowledge_base.question %></td>
+            <td class="clickable"><%= knowledge_base.answer %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>

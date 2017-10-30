@@ -1,0 +1,1517 @@
+@import "../_variables.scss";
+
+
+
+
+.icon {
+  display: inline-block;
+  font-weight: normal;
+  color: $color-icon-medium;
+  position: relative;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  text-indent: -9999px;
+}
+
+.icon:before,
+.icon:after {
+  font-size: 32px;
+  speak: none;
+  font-family: $font-icons;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  text-indent: 0px;
+  display: block;
+  position: absolute;
+  word-spacing: 0;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon.actionable {
+  color: $color-actionable;
+  cursor: pointer;
+
+}
+.icon.actionable:hover:before {
+  color: $color-actionable-hover;
+}
+.icon.actionable:active:before {
+  color: $color-actionable-active;
+}
+
+.icon.alignMiddle {
+  margin-top: -3px;
+}
+
+.icon.destructive,
+.icon.actionable.destructive {
+  color: $color-actionable-destructive;
+}
+.icon.actionable.destructive:hover:before {
+  color: $color-actionable-destructive-hover;
+}
+.icon.actionable.destructive:active:before {
+  color: $color-actionable-destructive-active;
+}
+
+.icon.disabled,
+.icon.actionable.disabled {
+  pointer-events: none;
+  opacity: 0.3;
+  color: $color-icon-medium;
+}
+
+.icon.pageHeader,
+.icon.pageHeader:after,
+.icon.white,
+.icon.white:after {
+  color: #FFFFFF;
+}
+
+.icon.light:before {
+  color: $color-icon-light;
+}
+
+/*
+  Necessary to override the legacy .dark style for highslide stuff
+*/
+.icon.dark,
+.icon.dark:hover {
+  background: none;
+}
+
+.icon.dark:before,
+.icon.dark:hover:before {
+  color: $color-icon-dark;
+}
+
+
+.icon.green:before,
+.icon.green:hover:before {
+  color: #6FAE3C;
+}
+
+.icon.red:before,
+.icon.red:hover:before {
+  color: $color-error-text;
+}
+
+
+
+/********** Individual icon definitions **********/
+
+/* Clock */
+.icon.iconClock:before {
+  content: "\e600";
+}
+
+.icon.iconClock.small {
+  width: 16px;
+  height: 16px;
+}
+
+.icon.iconClock.small:before {
+  font-size: 16px;
+}
+
+
+/* Hand Pointer */
+.icon.iconHandPointer:before {
+  content: "\e602";
+}
+
+.icon.iconHandPointer.small {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconHandPointer.small:before {
+  font-size: 16px;
+}
+
+/* User Silhouette */
+.icon.iconSilhouette:before {
+  content: "\e603";
+}
+.icon.iconSilhouette.small {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconSilhouette.small:before {
+  font-size: 16px;
+}
+
+/* Satellite Dish */
+.icon.iconSatelliteDish {
+  height: 28px;  
+}
+.icon.iconSatelliteDish:before {
+  top: -2px;
+  content: "\e604";
+}
+.icon.iconSatelliteDish.small {
+  height: 14px;  
+  width: 16px;
+}
+.icon.iconSatelliteDish.small:before {
+  top: -1px;
+  font-size: 16px;
+}
+
+/* Next / Previous */
+.icon.iconPrevious,
+.icon.iconNext {
+  width: 20px;
+}
+.icon.iconPrevious:before {
+  content: "\e605";
+  left: -5px;
+}
+.icon.iconNext:before {
+  content: "\e606";
+  left: -7px;
+}
+.icon.iconPrevious.small,
+.icon.iconNext.small {
+  height: 16px;
+  width: 11px;
+}
+.icon.iconPrevious.small:before {
+  font-size: 16px;
+  left: -2px;
+}
+.icon.iconNext.small:before {
+  font-size: 16px;
+  left: -3px;
+}
+
+/* Table Column Sorting */
+
+.icon.iconSortBoth,
+.icon.iconSortDesc,
+.icon.iconSortAsc {
+  height: 14px;
+  width: 12px;
+}
+.icon.iconSortBoth:before,
+.icon.iconSortDesc:before,
+.icon.iconSortAsc:before {
+  top: -1px;
+  left: -2px;
+  font-size: 16px;
+}
+.icon.iconSortBoth:before {
+  content: "\e607";
+}
+.icon.iconSortDesc:before {
+  content: "\e608";
+}
+.icon.iconSortAsc:before {
+  content: "\e609";
+}
+
+/* Speech Bubble */
+.icon.iconSpeechBubble {
+  height: 30px;
+}
+.icon.iconSpeechBubble:before {
+  content: "\e60a";
+}
+.icon.iconSpeechBubble.small {
+  height: 15px;
+  width: 16px;
+}
+.icon.iconSpeechBubble.small:before {
+  font-size: 16px;
+}
+
+/* App */
+.icon.iconApp {
+  width: 24px;
+  height: 22px;
+}
+.icon.iconApp:before {
+  left: -4px;
+  top: -5px;
+  content: "\e60b";
+}
+.icon.iconApp.small:before {
+  font-size: 24px;
+  left: -3px;
+  top: -3px;
+}
+
+/* Calendar */
+.icon.iconCalendar {
+  width: 17px;
+  height: 17px;
+}
+.icon.iconCalendar:before {
+  top: -8px;
+  left: -7px;
+  content: "\e60c";
+  /*color: $color-icon-dark;*/
+}
+
+.icon.iconCalendarError {
+  width: 24px;
+  height: 19px;
+}
+.icon.iconCalendarError:before {
+  top: -6px;
+  left: -4px;
+  content: "\e653";
+  color: $color-error-text;
+}
+
+
+/* Check Marks */
+
+.icon.iconFancyCheck:before {
+  content: "\e601";
+}
+.icon.iconFancyCheck.small {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconFancyCheck.small:before {
+  font-size: 16px;
+}
+
+.icon.iconCheckBare {
+  width: 22px;
+  height: 18px;
+}
+.icon.iconCheckBare:before {
+  left: -6px;
+  top: -8px;
+  content: "\e60d";
+}
+.icon.iconCheckBare.small {
+  width: 11px;
+  height: 9px;
+}
+.icon.iconCheckBare.small:before {
+  left: -3px;
+  top: -4px;
+  font-size: 16px;
+}
+.icon.iconCheckBare.mediumSmall {
+  width: 16px;
+  height: 15px;
+}
+.icon.iconCheckBare.mediumSmall:before {
+  left: -4px;
+  top: -6px;
+  font-size: 24px;
+}
+
+
+
+
+.icon.iconGreenCheck {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  background-color: #6FAE3C;
+  color: #FFFFFF;
+}
+.icon.iconGreenCheck:before {
+  font-size: 24px;
+  top:4px;
+  left:3px;
+  content: "\e60d";
+}
+.icon.iconGreenCheck.small {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+.icon.iconGreenCheck.small:before {
+  font-size: 16px;
+  top:2px;
+  left:2px;
+}
+.icon.iconGreenCheck.large {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+}
+.icon.iconGreenCheck.large:before {
+  font-size: 48px;
+  top:8px;
+  left:7px;
+}
+.icon.iconGreenCheck.micro {
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+}
+.icon.iconGreenCheck.micro:before {
+  font-size: 12px;
+  top:0px;
+  left:0px;
+}
+.icon.iconGreenCheck.micro.alignMiddle {
+  margin-top: -2px;
+}
+
+
+/* Close */
+.icon.iconCloseThick {
+  width: 24px;
+  height: 24px;
+}
+.icon.iconCloseThick:before {
+  top: -4px;
+  left: -4px;
+  content: "\e60e";
+}
+.icon.iconCloseThick.small {
+  width: 12px;
+  height: 12px;
+}
+.icon.iconCloseThick.small:before {
+  top: -2px;
+  left: -2px;
+  font-size: 16px;
+}
+
+.icon.iconCloseThin {
+  width: 24px;
+  height: 24px;
+}
+.icon.iconCloseThin:before {
+  top: -4px;
+  left: -4px;
+  content: "\e60f";
+}
+.icon.iconCloseThin.small {
+  width: 12px;
+  height: 12px;
+}
+.icon.iconCloseThin.small:before {
+  top: -2px;
+  left: -2px;
+  font-size: 16px;
+}
+.icon.iconCloseThin.micro {
+  width: 6px;
+  height: 6px;
+}
+.icon.iconCloseThin.micro:before {
+  top: -1px;
+  left: -1px;
+  font-size: 8px;
+}
+
+
+/* Dollar Sign */
+.icon.iconDollarSign {
+  width: 14px;
+  height: 28px;
+}
+.icon.iconDollarSign:before {
+  top: -2px;
+  left: -8px;
+  content: "\e610";
+}
+.icon.iconDollarSign.small {
+  width: 7px;
+  height: 14px;
+}
+.icon.iconDollarSign.small:before {
+  top: -1px;
+  left: -4px;
+  font-size: 16px;
+  /*color: $color-icon-dark;*/
+}
+
+
+/* Error / Warning Indicator */
+.icon.iconError {
+  width: 20px;
+  height: 18px;
+}
+.icon.iconError:before {
+  left: -6px;
+  top: -6px;
+  color: #FFD200;
+  content: "\e611";
+}
+.icon.iconError:after {
+  left: -6px;
+  top: -6px;
+  color: #000000;
+  content: "\e612";
+}
+.icon.iconError.small {
+  width: 13px;
+  height: 12px;
+}
+.icon.iconError.small:before,
+.icon.iconError.small:after {
+  font-size: 21px;
+  left: -4px;
+  top: -4px;
+}
+.icon.iconError.large {
+  width: 40px;
+  height: 36px;
+}
+.icon.iconError.large:before,
+.icon.iconError.large:after {
+  font-size: 64px;
+  left: -12px;
+  top: -12px;
+}
+
+/* Column Filter */
+.icon.iconFilter {
+  width: 12px;
+  height: 9px;
+}
+.icon.iconFilter:before {
+  left: -2px;
+  top: -3px;
+  font-size: 16px;
+  content: "\e613";
+}
+.icon.iconFilter.large {
+  width: 24px;
+  height: 18px;
+}
+.icon.iconFilter.large:before {
+  left: -4px;
+  top: -6px;
+  font-size: 32px;
+  content: "\e613";
+}
+
+
+/* Grouping */
+.icon.iconGroupBy {
+  width: 24px;
+  height: 24px;
+}
+.icon.iconGroupBy:before {
+  left: -4px;
+  top: -4px;
+  content: "\e614";
+}
+
+
+/* Hamburger */
+.icon.iconHamburger {
+  height: 30px;
+}
+.icon.iconHamburger:before {
+  content: "\e615";
+}
+
+.icon.iconHamburger.small {
+  height: 15px;
+  width: 16px;
+}
+.icon.iconHamburger.small:before {
+  font-size: 16px;
+}
+
+
+/* Help */
+.icon.iconHelp {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #D5ECFE;
+}
+.icon.iconHelp:before {
+  font-size: 16px;
+  top: 3px;
+  left: 2px;
+  content: "\e616";
+  color: #2DB3DF;
+}
+
+.icon.iconHelp.dark {
+  background-color: $color-icon-medium;
+}
+.icon.iconHelp.dark:before {
+  color: #FFFFFF;
+}
+
+/* Info */
+.icon.iconInfo {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #D5ECFE;
+}
+.icon.iconInfo:before {
+  font-size: 20px;
+  top: 0px;
+  left: 0px;
+  content: "\e63a";
+  color: #2DB3DF;
+}
+
+.icon.iconInfo.large {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.icon.iconInfo.large:before {
+  font-size: 40px;
+}
+
+
+/* Visibility */
+.icon.iconVisible,
+.icon.iconInvisible {
+  width: 23px;
+  height: 21px;
+}
+.icon.iconVisible:before,
+.icon.iconInvisible:before {
+  top: -4px;
+  left: -4px;
+  color: $color-icon-dark;
+  
+}
+.icon.iconVisible:before {
+  content: "\e618";
+}
+.icon.iconInvisible:before {
+  content: "\e619";
+}
+
+
+/* Not Allowed */
+.icon.iconNotAllowed {
+  width: 20px;
+  height: 20px;
+}
+.icon.iconNotAllowed:before {
+  content: "\e61a";
+  top: -6px;
+  left: -6px;
+}
+
+/* Note */
+.icon.iconNote {
+  width: 16px;
+  height: 20px;
+}
+.icon.iconNote:before {
+  content: "\e61b";
+  top: -6.000px;
+  left: -8.000px;
+}
+.icon.iconNote.small {
+  width: 8px;
+  height: 10px;
+}
+.icon.iconNote.small:before {
+  font-size: 16px;
+  top: -3px;
+  left: -4px;
+}
+
+/* Page */
+.icon.iconPage {
+  width: 18px;
+  height: 24px;
+}
+.icon.iconPage:before {
+  content: "\e61c";
+  top: -4px;
+  left: -7px;
+}
+
+
+/* Percent */
+.icon.iconPercent {
+  width: 20px;
+  height: 22px;
+}
+.icon.iconPercent:before {
+  content: "\e61d";
+  top: -6px;
+  left: -6px;
+}
+.icon.iconPercent.small {
+  width: 10px;
+  height: 11px;
+}
+.icon.iconPercent.small:before {
+  font-size: 16px;
+  top: -3px;
+  left: -3px;
+  color: $color-icon-dark;
+}
+
+/* Recurring */
+.icon.iconRecurring,
+.icon.iconRecurringActive,
+.icon.iconRecurringPaused {
+  width: 24px;
+  height: 20px;
+}
+.icon.iconRecurring:before,
+.icon.iconRecurringActive:before,
+.icon.iconRecurringPaused:before {
+  top: -6px;
+  left: -4px;
+}
+.icon.iconRecurring:before {
+  content: "\e61e";
+}
+.icon.iconRecurringActive:before {
+  content: "\e61e";
+  color: #6FAE3C;
+}
+.icon.iconRecurringPaused:before {
+  content: "\e61f";
+}
+
+/* Flag */
+.icon.iconFlag {
+  width: 24px;
+  height: 24px;
+}
+.icon.iconFlag:before,
+.icon.iconFlag:after {
+  top: -4px;
+  left: -4px;
+}
+.icon.iconFlag:before {
+  content: "\e620";
+}
+.icon.iconFlag:after {
+  content: "\e621";
+  color: $color-error-text;
+}
+.icon.iconFlag.small {
+  width: 12px;
+  height: 12px;
+}
+.icon.iconFlag.small:before,
+.icon.iconFlag.small:after {
+  top: -2px;
+  left: -2px;
+  font-size: 16px;
+}
+
+/* Search */
+.icon.iconSearch:before {
+  content: "\e622";
+}
+.icon.iconSearch.small {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconSearch.small:before {
+  font-size: 16px;
+  /*color: $color-icon-dark;*/
+}
+
+
+
+/* Select Arrow */
+.icon.iconSelectArrow {
+  width: 26px;
+  height: 16px;
+}
+.icon.iconSelectArrow:before {
+  content: "\e623";
+  left: -2px;
+  top: -8px;
+}
+.icon.iconSelectArrow.small {
+  width: 13px;
+  height: 8px;
+}
+.icon.iconSelectArrow.small:before {
+  font-size: 16px;
+  left: -1px;
+  top: -4px;
+  /*color: $color-icon-dark;*/
+}
+
+/* Sort Control */
+.icon.iconSortBy {
+  width: 24px;
+  height: 22px;
+}
+.icon.iconSortBy:before {
+  content: "\e624";
+  left: -4px;
+  top: -5px;
+}
+
+/* Star Rating */
+.icon.iconStarFull,
+.icon.iconStarHalf,
+.icon.iconStarEmpty {
+  width: 18px;
+  height: 16px;
+}
+.icon.iconStarFull:before {
+  content: "\e625";
+  left: -7px;
+  top: -8px;
+  color: #FFC72C;
+}
+
+.icon.iconStarHalf:before {
+  content: "\e626";
+  left: -7px;
+  top: -8px;
+  color: #FFC72C;
+}
+.icon.iconStarHalf:after {
+  content: "\e626";
+  left: -6px;
+  top: -8px;
+  color: #E8E8E8;
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: “FlipH”;
+}
+
+.icon.iconStarEmpty:before {
+  content: "\e625";
+  left: -7px;
+  top: -8px;
+  color: #E8E8E8;
+}
+
+/* Sums / Averages */
+.icon.iconSumAvg {
+  height: 14px;
+}
+.icon.iconSumAvg:before {
+  content: "\e627";
+  top: -10px;
+  color: $color-icon-dark;
+}
+
+/* Target */
+.icon.iconTarget {
+  height: 20px;
+  width: 20px;
+}
+.icon.iconTarget:before {
+  content: "\e628";
+  top: -6px;
+  left: -6px;
+}
+.icon.iconTarget.small {
+  height: 10px;
+  width: 10px;
+}
+.icon.iconTarget.small:before {
+  font-size: 16px;
+  top: -3px;
+  left: -3px;
+}
+
+/* Universal Search */
+.icon.iconUniversalSearch {
+  height: 24px;
+  width: 24px;
+}
+.icon.iconUniversalSearch:before {
+  content: "\e629";
+  top: -4px;
+  left: -4px;
+  /*color: $color-icon-dark;*/
+}
+.icon.iconUniversalSearch.large {
+  height: 48px;
+  width: 48px;
+}
+.icon.iconUniversalSearch.large:before {
+  font-size: 64px;
+  top: -8px;
+  left: -8px;
+  color: #898989;
+}
+
+/* Link */
+.icon.iconLink {
+  height: 20px;
+  width: 20px;
+}
+.icon.iconLink:before {
+  content: "\e62a";
+  top: -6px;
+  left: -6px;
+}
+.icon.iconLink.small {
+  height: 10px;
+  width: 10px;
+}
+.icon.iconLink.small:before {
+  font-size: 16px;
+  top: -3px;
+  left: -3px;
+}
+
+/* Edit */
+.icon.iconEdit {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconEdit:before {
+  content: "\e62b";
+  top: -8px;
+  left: -8px;
+}
+
+
+/* Reports */
+.icon.iconReports {
+  width: 18px;
+  height: 18px;
+}
+.icon.iconReports:before {
+  content: "\e62c";
+  top: -7px;
+  left: -7px;
+}
+
+
+/* Pause */
+.icon.iconPause {
+  width: 10px;
+  height: 12px;
+}
+.icon.iconPause:before {
+  content: "\e62d";
+  top: -10px;
+  left: -11px;
+}
+
+.icon.iconPause.onRedMatte {
+  width: 20px;
+  height: 20px;
+  background-color: $color-error-text;
+  border-radius: 10px;
+}
+.icon.iconPause.onRedMatte:before {
+  top: -6px;
+  left: -6px;
+  color: #FFFFFF;
+}
+
+
+/* Resume */
+.icon.iconResume {
+  width: 11px;
+  height: 12px;
+}
+.icon.iconResume:before {
+  content: "\e62e";
+  top: -10px;
+  left: -11px;
+}
+
+.icon.iconResume.onGreenMatte {
+  width: 20px;
+  height: 20px;
+  background-color: #6FAE3C;
+  border-radius: 10px;
+}
+.icon.iconResume.onGreenMatte:before {
+  top: -10px;
+  left: -11px;
+  top: -6px;
+  left: -5px;
+  color: #FFFFFF;
+}
+
+
+
+/* Show */
+.icon.iconShow {
+  width: 14px;
+  height: 14px;
+}
+.icon.iconShow:before {
+  content: "\e62f";
+  top: -9px;
+  left: -9px;
+}
+
+
+/* Add */
+.icon.iconAdd {
+  width: 12px;
+  height: 12px;
+}
+.icon.iconAdd:before {
+  content: "\e630";
+  top: -10px;
+  left: -10px;
+}
+
+/* Remove */
+.icon.iconRemove {
+  width: 12px;
+  height: 12px;
+}
+.icon.iconRemove:before {
+  content: "\e632";
+  top: -10px;
+  left: -10px;
+}
+
+
+/* Recalculate */
+.icon.iconRecalculate {
+  width: 16px;
+  height: 17px;
+}
+.icon.iconRecalculate:before {
+  content: "\e634";
+  top: -7px;
+  left: -8px;
+}
+
+
+/* Recalculate */
+.icon.iconConfigure {
+  width: 18px;
+  height: 18px;
+}
+.icon.iconConfigure:before {
+  content: "\e635";
+  top: -7px;
+  left: -7px;
+}
+
+
+/* Download */
+.icon.iconDownload {
+  width: 16px;
+  height: 20px;
+}
+.icon.iconDownload:before {
+  content: "\e636";
+  top: -6px;
+  left: -8px;
+}
+
+
+/* Reset */
+.icon.iconReset {
+  width: 16px;
+  height: 19px;
+}
+.icon.iconReset:before {
+  content: "\e637";
+  top: -6px;
+  left: -8px;
+}
+
+/* Delete */
+.icon.iconDelete {
+  width: 16px;
+  height: 19px;
+}
+.icon.iconDelete:before {
+  content: "\e638";
+  top: -7px;
+  left: -8px;
+}
+
+/* Photo */
+.icon.iconPhoto {
+  width: 18px;
+  height: 18px;
+}
+.icon.iconPhoto:before {
+  content: "\e63b";
+  top: -7px;
+  left: -7px;
+}
+
+/* Card */
+.icon.iconCard {
+  width: 14px;
+  height: 18px;
+}
+.icon.iconCard:before {
+  content: "\e63c";
+  top: -7px;
+  left: -9px;
+}
+
+
+/* Duplicate */
+.icon.iconDuplicate {
+  width: 18px;
+  height: 18px;
+}
+.icon.iconDuplicate:before {
+  content: "\e63d";
+  top: -7px;
+  left: -7px;
+}
+
+
+/* More */
+.icon.iconMore {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconMore:before {
+  content: "\e63e";
+  top: -8px;
+  left: -8px;
+}
+
+/* Select Nane / All */
+.icon.iconSelectNone,
+.icon.iconSelectAll {
+  width: 17px;
+  height: 15px;
+}
+.icon.iconSelectNone:before,
+.icon.iconSelectAll:before {
+  top: -8px;
+  left: -9px;
+}
+.icon.iconSelectNone:before {
+  content: "\e63f";
+}
+.icon.iconSelectAll:before {
+  content: "\e640";
+}
+
+/* Fat / Thin Rows */
+.icon.iconFatRows,
+.icon.iconThinRows {
+  width: 18px;
+  height: 20px;
+}
+.icon.iconFatRows:before,
+.icon.iconThinRows:before {
+  top: -6px;
+  left: -7px;
+}
+.icon.iconFatRows:before {
+  content: "\e641";
+}
+.icon.iconThinRows:before {
+  content: "\e642";
+}
+
+
+/* Print */
+.icon.iconPrint {
+  width: 20px;
+  height: 22px;
+}
+.icon.iconPrint:before {
+  content: "\e643";
+  top: -5px;
+  left: -6px;
+}
+
+
+/* Social Asset Manager */
+.icon.iconSAM {
+  width: 20px;
+  height: 18px;
+}
+.icon.iconSAM:before {
+  content: "\e644";
+  top: -7px;
+  left: -6px;
+}
+
+/* Apple Logo */
+.icon.iconApple {
+  width: 26px;
+  height: 32px;
+}
+.icon.iconApple:before {
+  content: "\e647";
+  left: -2px;
+}
+.icon.iconApple.small {
+  width: 13px;
+  height: 16px;
+}
+.icon.iconApple.small:before {
+  left: -1px;
+  font-size: 16px;
+}
+.icon.iconApple.large {
+  width: 52px;
+  height: 64px;
+}
+.icon.iconApple.large:before {
+  left: -4px;
+  font-size: 64px;
+}
+
+/* OS X Clover */
+.icon.iconOSXCmd {
+  width: 32px;
+  height: 32px;
+}
+.icon.iconOSXCmd:before {
+  content: "\e648";
+}
+.icon.iconOSXCmd.small {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconOSXCmd.small:before {
+  font-size: 16px;
+}
+.icon.iconOSXCmd.large {
+  width: 64px;
+  height: 64px;
+}
+.icon.iconOSXCmd.large:before {
+  font-size: 64px;
+}
+.icon.iconOSXCmd.darker:before {
+  color: $color-icon-dark;
+}
+
+/* Windows Logo */
+.icon.iconWindows {
+  width: 28px;
+  height: 30px;
+}
+.icon.iconWindows:before {
+  content: "\e649";
+}
+.icon.iconWindows.small {
+  width: 14px;
+  height: 15px;
+}
+.icon.iconWindows.small:before {
+  font-size: 16px;
+}
+.icon.iconWindows.large {
+  width: 56px;
+  height: 60px;
+}
+.icon.iconWindows.large:before {
+  font-size: 64px;
+}
+
+
+/* Crop */
+
+.icon.iconCrop:before {
+  content: "\e64f";
+}
+
+.icon.iconCropIndicatorFlag {
+  color: #FFFFFF;
+  background-color:#6FAE3C;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+}
+
+.icon.iconCropIndicatorFlag:before {
+  content: "\e64f";
+  font-size: 32px;
+  color: #FFFFFF;
+  top: -3px;
+  left: -3px;
+}
+
+
+/* Audiences */
+
+.icon.iconAudiences:before {
+  content: "\e64d";
+}
+
+.icon.iconAudiences.small {
+  width: 16px;
+  height: 16px;
+}
+.icon.iconAudiences.small:before {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.icon.iconAudiences.large {
+  width: 64px;
+  height: 64px;
+}
+.icon.iconAudiences.large:before {
+  font-size: 64px;
+  line-height: 64px;
+}
+
+h1 .icon.iconAudiences {
+  width: 48px;
+  height: 36px;
+  margin-bottom: -2px;
+  vertical-align: baseline;
+}
+h1 .icon.iconAudiences:before {
+  top:-4px;
+  font-size: 48px;
+  line-height: 48px;
+}
+
+
+/* Locked / Unlocked */
+
+.icon.iconLocked {
+  width: 16px;
+  height: 18px;
+}
+
+.icon.iconLocked:before {
+  content: "\e650";
+  color: $color-error-text;
+  top: -6px;
+  left: -8px;
+}
+
+
+
+.icon.iconLocked.large {
+  width: 32px;
+  height: 36px;
+}
+.icon.iconLocked.large:before {
+  font-size: 64px;
+  line-height: 64px;
+  top: -12px;
+  left: -16px;
+}
+
+.icon.iconUnlocked {
+  width: 16px;
+  height: 18px;
+}
+
+.icon.iconUnlocked:before {
+  content: "\e651";
+  color: #6FAE3C;
+  top: -6px;
+  left: -8px;
+}
+
+
+.icon.iconUnlocked.large {
+  width: 32px;
+  height: 36px;
+}
+.icon.iconUnlocked.large:before {
+  font-size: 64px;
+  line-height: 64px;
+  top: -12px;
+  left: -16px;
+}
+
+.icon.iconLocked.white:before,
+.icon.iconUnlocked.white:before {
+  color: #FFFFFF;
+}
+
+/* Tags */
+
+.icon.iconTag {
+  width: 16px;
+  height: 16px;
+}
+
+.icon.iconTag:before {
+  font-size: 16px;
+  content: "\e652";
+}
+
+/* Working */
+
+.icon.iconWorking {
+  width: 18px;
+  height: 18px;
+}
+.icon.iconWorking:before {
+  content: "\e654";
+  top: -7px;
+  left: -7px;
+}
+
+
+/* rewind */
+
+.icon.iconRewind {
+  width: 12px;
+  height: 12px;
+}
+.icon.iconRewind:before {
+  content: "\e655";
+  top: -10px;
+  left: -10px;
+}
+
+/* Selection */
+
+.icon.iconSelection {
+  width: 14px;
+  height: 14px;
+}
+.icon.iconSelection:before {
+  content: "\e656";
+  top: -9px;
+  left: -9px;
+}
+
+/* Chevron Up */
+
+.icon.iconChevronUp {
+  width: 24px;
+  height: 10px;
+}
+.icon.iconChevronUp:before {
+  content: "\e657";
+  top: -10px;
+  left: -4px;
+}
+
+
+/*******************
+ * Social Icons
+ */
+
+.socialIcon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+.socialIcon.alignMiddle {
+  margin-top: -4px; 
+}
+
+h1 .socialIcon.alignMiddle {
+  margin-top: -12px;
+}
+
+.socialIcon.micro {
+  background-position: -266px -74px;
+  width: 12px;
+  height: 12px;
+}
+
+.socialIcon.xsm {
+  background-position: -244px -74px;
+  width: 20px;
+  height: 20px;
+}
+
+.socialIcon.sm {
+  background-position: -238px -98px;
+  width: 36px;
+  height: 36px;
+}
+
+.socialIcon.med {
+  background-position: -146px -98px;
+  width: 48px;
+  height: 48px;
+}
+
+.socialIcon.lrg {
+  background-position: -244px 0px;
+  width: 72px;
+  height: 72px;
+}
+
+.socialIcon.fb {
+  background-image: url(<%= image_path "icons/channels/channel-icon-sprite_fb.png" %>);
+}
+
+.socialIcon.tw {
+  background-image: url(<%= image_path "icons/channels/channel-icon-sprite_tw.png" %>);
+}
+
+.socialIcon.pi {
+  background-image: url(<%= image_path "icons/channels/channel-icon-sprite_pi.png" %>);
+}
+
+.socialIcon.ig {
+  background-image: url(<%= image_path "icons/channels/channel-icon-sprite_ig.png" %>);
+}
+
+.socialIcon.li {
+  background-image: url(<%= image_path "icons/channels/channel-icon-sprite_li.png" %>);
+}
+
+.socialIcon.fs {
+  background-image: url(<%= image_path "icons/channels/channel-icon-sprite_fs.png" %>);
+}
+
+.socialIcon.sc {
+  background-image: url(<%= image_path "icons/channels/channel-icon-sprite_sc.png" %>);
+}
+
+@media
+  (min--moz-device-pixel-ratio: 2.0),
+  (-o-min-device-pixel-ratio: 4.0/2),
+  (-webkit-min-device-pixel-ratio: 2.0),
+  (min-device-pixel-ratio: 2.0),
+  (min-resolution: 2.0dppx) {
+
+    .icon.iconAdd:before {
+      content: "\e631";
+    }
+    .icon.iconRemove:before {
+      content: "\e633";
+    } 
+    .icon.iconDelete:before {
+      content: "\e639";
+    }
+
+
+    .socialIcon {
+      background-size: 158px 73px;
+    }
+
+    .socialIcon.micro {
+      background-position: -138px -49px;
+    }
+
+    .socialIcon.xsm {
+      background-position: -98px -49px;
+    }
+
+    .socialIcon.sm {
+      background-position: -122px 0px;
+    }
+
+    .socialIcon.med {
+      background-position: -73px 0px;
+    }
+
+    .socialIcon.lrg {
+      background-position: 0px 0px;
+    }
+
+
+}

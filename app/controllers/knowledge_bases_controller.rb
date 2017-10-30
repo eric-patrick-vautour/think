@@ -1,7 +1,10 @@
 class KnowledgeBasesController < ApplicationController
   def index
+    @search = KnowledgeBase.search(params[:q])
+    @knowledge_bases = @search.result
+
     respond_to do |format|
-      format.html { render text: 'index' }
+      format.html {}
     end
   end
 

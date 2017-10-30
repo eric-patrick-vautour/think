@@ -1,0 +1,134 @@
+@import "../_variables.scss";
+/************ Generic rules for printing **************/
+/*
+
+  This file is included separately from the other stylesheets
+  with the media attribute explicitly set to "print".
+
+*/
+
+/* try to force background images and colours to print */
+* {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body,
+.pageWrap {
+  margin: 0px;
+  padding: 0px;
+  background: none;
+}
+
+div.header,
+div.footer,
+div.fixedNav,
+footer,
+div#footer,
+.campaignHeader .actions,
+.bigContainer .titleBar .actions,
+.bigContainer .subTitleBar,
+.bigContainer .rightSidebar,
+.bigContainer .leftSidebar {
+  display: none;
+}
+
+.printHeader,
+.campaignHeader,
+.printOnly,
+.bigContainer,
+.pageWrap > h1,
+.pageWrap > h1 + p {
+  display: block;
+}
+
+.campaignHeader h1,
+.pageWrap > h1,
+.pageWrap > h2,
+.pageWrap > h3,
+.pageWrap > h5,
+.pageWrap > h6 {
+  color: $color-heading-text;
+}
+
+.campaignHeader p,
+.pageWrap > p,
+.pageWrap > code,
+.pageWrap > p > code {
+  color: $color-body-text;
+}
+
+.printHeader {
+  padding-bottom: 0.125in;
+  border-bottom: solid 1pt $color-keyline-dark;
+  margin-bottom: 0.375in;
+}
+
+.printHeader img {
+  width: 1.333in;
+  height: 0.5in;
+}
+
+.bigContainer .body.withRightSidebar,
+.bigContainer .body.withLeftSidebar {
+  background-image: none;
+}
+
+.bigContainer .mainColumn {
+  margin: 0px;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.bigContainer .withLeftSidebar .mainColumn {
+  margin-left: 0px;
+}
+
+.bigContainer .withRightSidebar .mainColumn {
+  margin-right: 0px;
+}
+
+
+/*** Rules for Campaign Wizard Summary Screen ***/
+
+.summarySectionTitleBlock h3 button,
+.summarySectionTitleBlock h3 .button,
+.summarySection .summarySectionTitleBlock p.info
+{
+  display: none;
+}
+
+.summarySection .summarySectionTitleBlock {
+  width: 100%;
+  float: none;
+  page-break-after: avoid;
+}
+
+.summarySection .summarySectionDetailsBlock {
+  margin-left: 0px;
+  padding-top: 0px;
+}
+
+.summarySection .summarySectionDetailsBlock .summarySectionDetailsBlockError,
+.summarySection .summarySectionDetailsBlock p.callout,
+.summarySection .summarySectionDetailsBlock table tr {
+  page-break-inside: avoid;
+}
+
+
+/*** Rules for Pinternest Campiagn Wizard Summary Screen ***/
+
+table.promotedPinsList tr {
+  page-break-inside: avoid;
+}
+
+table.promotedPinsList tr td:last-child button,
+table.promotedPinsList tr td:last-child .button {
+  display: none;
+}
+
+
+
+
+

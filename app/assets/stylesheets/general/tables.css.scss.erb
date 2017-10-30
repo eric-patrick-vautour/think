@@ -1,0 +1,1751 @@
+/* CSS Document */
+@import "../_variables.scss";
+
+.tableContainer {
+    margin-bottom:3.8125rem;
+    overflow-x:auto;
+    padding-bottom:1.5rem;
+
+}
+
+.tableContainer.fixedHeight {
+  max-height: 500px;
+  overflow-y: scroll;
+  padding-bottom: 0rem;
+  border-top: solid 2px $color-keyline-dark;
+  border-bottom: solid 2px $color-keyline-dark;
+}
+
+.tableContainer.fixedHeight thead {
+  border-top: none;
+}
+
+.tableContainer.fixedHeight tbody {
+  border-bottom: none;
+}
+
+
+.tableContainer h3 {
+	text-align:left;
+    padding-top:1.3125rem;
+    margin-bottom:-.75rem;
+}
+
+.tableContainer h4 {
+	text-align:left;
+    padding-top:1.3125rem;
+    margin-bottom:0rem;
+	/*padding-left:0.5rem;	*/
+}
+
+
+table {
+	width:100%;
+	border-collapse:collapse;
+
+    overflow-x: auto;
+
+}
+
+table.reorderColumns th:hover {
+  cursor: url(<%= image_path "ui/openhand.cur" %>), pointer; /* for IE */
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grap;
+}
+
+.draggableCursor table.reorderColumns th:hover {
+  cursor: url(<%= image_path "ui/closedhand.cur" %>), move; /* for IE */
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+table.reorderColumns th:active {
+  cursor: url(<%= image_path "ui/closedhand.cur" %>), move; /* for IE */
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;  
+}
+
+table.deleteColumns th > div.columnDelete {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+  width: 9px;
+  height: 9px;
+  opacity: 0;
+  -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
+  -o-transition: opacity 0.1s;
+  -ms-transition: opacity 0.1s;
+  transition: opacity 0.1s;  
+
+  background-image: url(<%= image_path "icons/icon-delete_sm.png" %>);
+  background-repeat: no-repeat;
+}
+
+table.deleteColumns th:hover > div.columnDelete {
+  opacity: 1;
+}
+
+table.topAlignedRows td {
+  vertical-align: top;
+}
+
+table.truncateCells {
+  table-layout: fixed;
+}
+
+table.truncateCells td,
+table.truncateCells th {
+  text-overflow: ellipsis;
+  overflow:hidden;
+  text-align:left\9; /* right-aligned text will overlap the ellipsis in IE9 */
+}
+
+table.noWrap td,
+table.noWrap th {
+  white-space: nowrap;
+}
+
+/*
+   Unfortunately, IE10 understands the IE9 hack above, and
+   we only want to apply it to IE 9.
+   This is a hack for IE10 to undo the above IE9 hack.
+*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  table.truncateCells td,
+  table.truncateCells th {
+    text-align:center;
+  }
+  table.truncateCells td.leftJustify,
+  table.truncateCells th.leftJustify {
+    text-align:left;
+  }
+  table.truncateCells td.rightJustify,
+  table.truncateCells th.rightJustify {
+    text-align:right;
+  }
+}
+
+table ul,
+table ol {
+  margin-bottom: 0rem;
+}
+
+th, td {
+	font-weight:300;
+  font-size:0.875rem;
+  line-height: 1.5rem;
+
+  min-width: 3.5rem;
+	vertical-align:middle;
+	padding: 0.5rem 0.3125rem 0.4375rem 0.3125rem;
+	text-align:center;
+}
+
+table.thinnerRows th,
+table.thinnerRows td {
+  line-height: 1.25rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+
+table.thinnestRows th,
+table.thinnestRows td {
+  line-height: 1rem;
+  padding-top: 0.1875rem;
+  padding-bottom: 0.1875rem;
+}
+
+table.topAlign tbody tr td {
+  vertical-align: top;
+  padding-top: 0.75rem;
+}
+
+table.topAlign tbody tr td:last-child {
+  padding-top: 0.5rem;
+}
+
+
+thead {
+  border-top: solid 2px $color-keyline-dark;
+  border-bottom: solid 2px $color-keyline-dark;
+}
+
+thead th,
+thead td,
+tfoot th,
+tfoot td {
+  font-weight:400;
+  color: $color-dark-text;
+  background-color: $color-table-header-background;
+  border-right: solid 1px #FFFFFF;
+}
+
+thead th:last-child,
+thead td:last-child,
+tfoot th:last-child,
+tfoot td:last-child {
+  border-right: none;
+}
+thead tr.sumRow {
+    border-top:solid 1px #FFFFFF;
+    border-bottom: solid 2px $color-keyline-dark;
+}
+
+tfoot tr.sumRow {
+    border-top: solid 2px $color-keyline-dark;
+}
+
+thead tr.filterRow th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  /*color: #999999;*/
+  font-style: italic;
+  line-height: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  height: 1.25rem;
+  padding-left: 20px;
+  background-image: url(<%= image_path "icons/icon-filter.png" %>);
+  background-repeat: no-repeat;
+  background-position: left 5px top 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+thead tr.filterRow th:hover {
+  background-color: $color-table-row-hover;
+}
+
+thead tr.filterRow th:active {
+  background-color: $color-table-row-selected;
+}
+
+thead tr.filterRow th.menuOpen {
+  background-color: #FFFFFF;
+}
+
+table.infoFooter tfoot tr {
+  border-top: solid 2px $color-keyline-dark;
+}
+
+table.infoFooter tfoot td,
+tfoot.infoFooter tfoot th {
+  background: none;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+tr.clickable:hover,
+table.compact tr.clickable:hover {
+  cursor: pointer;
+  background-colour: $color-table-row-hover;
+}
+
+tr.sumRow td {
+  background-color:#f4f2ea;
+}
+
+tr.sumRow td:first-of-type {
+  position: relative;
+  padding-right: 40px;
+  vertical-align: middle;
+}
+tr.sumRow td:first-of-type:after {
+  display: block;
+  position: absolute;
+  font-family: $font-icons;
+  font-size: 32px;
+  right: 4px;
+  top:50%;
+  margin-top: -8px;
+  width: 32px;
+  height: 14px;
+  line-height: 14px;
+  color: $color-icon-dark;
+  content: "\e627";
+}
+
+tr.sumRow td img.sumsAveragesIcon {
+  float:right;
+  margin-top:9px;
+  display: none;
+}
+
+thead tr.actionsRow {
+  border-bottom:solid 1px #FFFFFF;
+  border-top:solid 2px $color-keyline-dark;
+  height: 80px;
+}
+
+thead tr.actionsRow.singleStrip {
+  height: 38px;
+}
+
+thead tr.actionsRow.wrapAndGrow {
+  height: auto;
+}
+
+thead tr.actionsRow.wrapAndGrow div {
+  line-height: 1.75rem;
+}
+
+
+
+
+thead tr.actionsRow td {
+  vertical-align:top;
+  padding-top:0rem;
+  padding-bottom:0rem;
+  background-color:#f4f2ea;
+}
+
+thead tr.actionsRow .actionsStrip {
+    width:100%;
+    text-align:left;
+    height:32px;
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+}
+
+thead tr.actionsRow.wrapAndGrow .actionsStrip {
+  height: auto;
+  margin-top: 0;
+}
+
+thead tr.actionsRow.wrapAndGrow .actionsStrip > * {
+  display: inline-block;
+  margin: 0.25rem 0;
+}
+
+thead tr.actionsRow .actionsStrip .selectionCount {
+    /*float:left;*/
+    height:30px;
+    line-height:30px;
+    width:8rem;
+    text-align:left;
+    margin-right:2rem;
+}
+
+thead tr.actionsRow.wrapAndGrow .actionsStrip .selectionCount {
+  float: left;
+}
+
+thead tr.actionsRow.wrapAndGrow .actionsOuter {
+  position: relative;
+}
+
+thead tr.actionsRow .actionsStrip .selectionCount.narrower {
+   width: 8rem;
+   margin-right: 0rem;
+}
+
+thead tr.actionsRow .actionsStrip .activationControls {
+    /*float:left;*/
+    height:26px;
+    line-height:26px;
+    margin-right:4rem;
+}
+
+thead tr.actionsRow .actionsStrip .activationControls > span {
+    display:inline-block;
+    text-align:left;
+    min-width:4rem;
+}
+
+thead tr.actionsRow .actionsStrip .budget,
+thead tr.actionsRow .actionsStrip .bid {
+    height:26px;
+    line-height:26px;
+    white-space:nowrap;
+    margin-right:1.5rem;
+}
+
+thead tr.actionsRow .actionsStrip .bid {
+    display:block;
+    padding-top:0.5rem;
+}
+
+thead tr.actionsRow .actionsStrip .budget > span,
+thead tr.actionsRow .actionsStrip .bid > span {
+    color: $color-body-text;
+}
+
+thead tr.actionsRow .actionsStrip .budget .totalBudget,
+thead tr.actionsRow .actionsStrip .bid .bidRange {
+    color:#404040;
+    font-weight:400;
+}
+
+thead tr.actionsRow .actionsStrip .bid .bidCats > span {
+    margin-left:1rem;
+}
+
+thead tr.actionsRow .actionsStrip .budget button,
+thead tr.actionsRow .actionsStrip .bid button {
+/*    display:inline-block;
+    height: 26px;
+    line-height:26px;*/
+}
+
+thead tr.actionsRow .actionsStrip input[type="text"] {
+    width:4rem;
+    padding:0.1875rem;
+    padding-top:0.28125rem;
+}
+
+thead tr.actionsRow .actionsStrip input[type="text"].dollarField {
+    padding-left:1.125rem;
+    background-position: left 0.375rem center;
+}
+
+thead {
+
+	/*border-bottom: solid 1px #FFFFFF;*/
+
+}
+
+html.ie thead tr {
+	border-bottom: solid 1px #D6D2C4;
+}
+
+/*thead tr:first-child th:first-child {
+	overflow:hidden;
+
+	-moz-border-radius-topleft: 9px;
+	-webkit-border-top-left-radius: 0px;
+	 border-top-left-radius: 9px;
+}
+
+thead tr:first-child th:last-child {
+	overflow:hidden;
+
+	-moz-border-radius-topright: 9px;
+	-webkit-border-top-right-radius: 9px;
+	border-top-right-radius: 9px;
+
+}*/
+
+thead th:hover {
+	/*cursor:pointer;*/
+}
+
+thead th:focus {
+	outline: none;
+}
+
+tbody {
+	border-bottom:solid 2px $color-keyline-dark;
+}
+
+tbody tr {
+	border-bottom: solid 1px $color-keyline-light;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr.groupingRow {
+  background-color: $color-keyline-light;
+  border-top: solid 2px $color-keyline-dark;
+  border-bottom: solid 1px $color-keyline-dark;
+}
+  
+tbody tr.groupingRow td {
+  font-weight: 400;
+  color: $color-dark-text;
+}
+
+table.withGroupedRows tbody:hover {
+  background-color: $color-table-row-hover;
+}
+
+table.withGroupedRows tbody:hover tr.groupingRow {
+  background-color: $color-table-row-selected;
+}
+
+table.withGroupedRows tbody:hover tr:hover {
+  background-color: $color-table-row-selected;
+}
+
+tbody tr:hover span.withHoverPreview:after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image:url(<%= image_path "icons/icon-search.png" %>);
+  background-repeat: no-repeat;
+  margin-bottom: -3px;
+  margin-left: 4px;
+}
+
+span.withHoverPreview,
+span.withHoverPreview:after {
+  cursor: url(<%= image_path "ui/zoom-in.cur" %>), pointer;
+  cursor: -moz-zoom-in; 
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+  white-space: nowrap;
+}
+
+
+td.leftJustify,
+th.leftJustify {
+	text-align:left;
+}
+
+td.rightJustify,
+th.rightJustify {
+	text-align:right;
+}
+
+td.placeholderCell,
+th.placeholderCell {
+  color: #AAAAAA;
+  font-style: italic;
+  background-color: transparentize($color-callout-bg, 0.7);
+}
+
+thead th.filterCell {
+	height:auto;
+	padding-bottom:0.4rem;
+}
+
+thead th select {
+	width:100%;
+    padding:0rem;
+    margin:0rem;
+    display:inline;
+	background-image:url(<%= image_path "icons/icon-filter.png" %>);
+	background-repeat:no-repeat;
+	background-position:4px;
+	background-color:#f4f2ea;
+	border:solid 1px #d6d2c4;
+	padding-left:1.25rem;
+	cursor:pointer;
+	height:1.5rem;
+	color:#404040;
+	font-family:"Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-weight:300;
+  min-height: 0;
+
+/*	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	*/
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+
+
+	/* weird hack to make Firefox hide the drop down arrow */
+	text-indent: 0.01px;
+    text-overflow: '';
+}
+
+thead th select::-ms-expand {
+    display: none;
+}
+
+tfoot td, tfoot th {
+	color:#404040;
+	background-color:#E8E8E8;
+	border-top: solid 1px #FFFFFF;
+	border-right: solid 1px #FFFFFF;
+	text-align:center;
+}
+
+td.statusGood {
+	color:#FFFFFF;
+	background-color:#6FAE3C;
+	border-left:solid 1px #FFFFFF;
+}
+
+td.statusPoor {
+	color:#FFFFFF;
+	background-color:#DB1717;
+	border-left:solid 1px #FFFFFF;
+}
+
+tbody tr:hover, tbody tr.bodyRowSelected:hover,
+tbody tr.ui-selectee.ui-selecting {
+  background-color: $color-table-row-hover;
+
+/*  -webkit-transition: background-color 0.1s;
+  -moz-transition: background-color 0.1s;
+  -o-transition: background-color 0.1s;
+  -ms-transition: background-color 0.1s;
+  transition: background-color 0.1s;*/
+
+}
+
+table.selectableRows tbody tr:hover,
+table.clickableRows tbody tr:hover {
+  cursor:pointer;
+}
+
+tbody tr button,
+tbody tr input[type="button"],
+tbody tr input[type="reset"],
+tbody tr input[type="submit"],
+tbody tr .button {
+  opacity:0.5;
+
+  -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
+  -o-transition: opacity 0.1s;
+  -ms-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+}
+
+tbody tr:hover button,
+tbody tr:hover input[type="button"],
+tbody tr:hover input[type="reset"],
+tbody tr:hover input[type="submit"],
+tbody tr:hover .button {
+  opacity: 1;
+}
+
+tbody tr button.toggled,
+tbody tr input[type="button"].toggled,
+tbody tr input[type="reset"].toggled,
+tbody tr input[type="submit"].toggled,
+tbody tr .button.toggled {
+  opacity: 1;
+}
+
+
+table.selectableRows tbody tr:active,
+table.clickableRows tbody tr:active {
+    background-color: $color-table-row-selected;
+    cursor:pointer;
+}
+
+table.selectableRows tbody tr.bodyRowSelected:active,
+table.clickableRows tbody tr.bodyRowSelected:active {
+    background-color:#FFFFFF;
+    cursor:pointer;
+}
+
+tbody tr.bodyRowSelected {
+  background-color: $color-table-row-selected;
+  /*border-bottom:solid 1px #FFFFFF;*/
+}
+
+/*
+    Hack for IE.  jQuery adds and removes these classes
+    on mouse down and mouse up, since the :active
+    pseudo class for the TR is not triggered when the
+    user clicks the child TD.
+*/
+tbody tr.ie_active {
+    background-color: $color-table-row-selected;
+    cursor:pointer;
+}
+
+tbody tr.ie_rowSelected_active {
+    background-color:#FFFFFF !important; /* I haven't figured out what is overridng this */
+    cursor:pointer;
+}
+/*
+    End IE hack.
+*/
+
+/* for a table with selectable rows, add checkboxs to left row end */
+
+
+table.selectableRows tbody tr td:first-child {
+    position:relative;
+    padding-left:1.875rem;
+}
+
+table.selectableRows tbody tr td:first-child:before {
+  content: " ";
+  font-size:1px;
+  line-height:1px;
+  width:16px;
+  height:16px;
+  background-image:url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat:no-repeat;
+  background-position: -120px -120px;
+  position:absolute;
+  left:0.3125rem;
+  top:0.6875rem;
+}
+
+table.selectableRows tbody tr.bodyRowSelected td:first-child:before {
+  background-position: -120px -140px
+}
+
+.dimensionMetricDivider {
+  border-left: solid 2px $color-keyline-dark;
+}
+
+
+/*********** TABLE ROW COLOUR DENSITY **************/
+
+tr.active_0 {
+  background-color:#f4d5aa;
+}
+
+tr.active_0.bodyRowSelected {
+  background-color:#a9bbc9;
+}
+
+tr.active_10 {
+  background-color:#f5d9b2;
+}
+
+tr.active_10.bodyRowSelected {
+  background-color:#aec0cf;
+}
+
+tr.active_20 {
+  background-color:#f6ddb9;
+}
+
+tr.active_20.bodyRowSelected {
+  background-color:#b2c5d4;
+}
+
+tr.active_30 {
+  background-color:#f7e1c3;
+}
+
+tr.active_30.bodyRowSelected {
+  background-color:#b6cad9;
+}
+
+tr.active_40 {
+  background-color:#f8e5cb;
+}
+
+tr.active_40.bodyRowSelected {
+  background-color:#bacfde;
+}
+
+tr.active_50 {
+  background-color:#faead5;
+}
+
+tr.active_50.bodyRowSelected {
+  background-color:#bfd4e3;
+}
+
+tr.active_60 {
+  background-color:#fbefde;
+}
+
+tr.active_60.bodyRowSelected {
+  background-color:#c3d9e8;
+}
+
+tr.active_70 {
+  background-color:#fcf4e8;
+}
+
+tr.active_70.bodyRowSelected {
+  background-color:#c7dded;
+}
+
+tr.active_80 {
+  background-color:#fdf8f0;
+}
+
+tr.active_80.bodyRowSelected {
+  background-color:#cbe1f2;
+}
+
+tr.active_90 {
+  background-color:#fefbf7;
+}
+
+tr.active_90.bodyRowSelected {
+  background-color:#d0e6f7;
+}
+
+tr.active_100 {
+  background-color:#ffffff;
+}
+
+tr.active_100.bodyRowSelected {
+  background-color:#d5ecfe;
+}
+
+
+/* style for "unread" messages, notices, etc. */
+tr.unread td {
+  font-weight: 700;
+  color: #404040;
+}
+
+/* style for rows reresenting inactive / disabled items */
+tr.inactive td {
+  color: darken( $color-actionable-disabled, 5%);
+}
+
+tr.accountInactive {
+  background-color: #F7F7F7;
+  cursor: default;
+}
+
+tr.errorRow {
+  background-color: #FEF3F3;
+}
+
+/**************** BODY ONLY TABLE ******************/
+
+table.bodyOnly {
+  margin-bottom: $baseline-scale;
+  table-layout: fixed;
+}
+
+table.bodyOnly tbody {
+  border:none;
+}
+
+table.bodyOnly tr {
+  border:none;
+  height:1.5rem;
+  border-bottom: solid 1px $color-keyline-light;
+}
+
+table.bodyOnly tr:first-child {
+  border-top: solid 1px $color-keyline-light;
+}
+
+table.bodyOnly.marginBottomQuarter {
+  margin-bottom: $quarter-baseline-scale;
+}
+
+table.bodyOnly.marginBottomHalf {
+  margin-bottom: $half-baseline-scale;
+}
+
+table.bodyOnly.marginBottomThreeQuarter {
+  margin-bottom: $three-quarter-baseline-scale;
+}
+
+
+/***************** COMPACT TABLE *******************/
+
+table.compact {
+  margin-bottom: 1.5rem;
+  table-layout: fixed;
+}
+
+table.compact thead,
+.summarySection table thead {
+  border-top: none;
+}
+
+table.compact tbody {
+  border:none;
+}
+
+table.compact tr {
+  border:none;
+  height:1.5rem;
+  border-bottom: solid 1px $color-keyline-light;
+}
+
+table.compact tr:first-child {
+  border-top: solid 1px $color-keyline-light;
+}
+
+table.compact th,
+table.compact td {
+  word-wrap: break-word;
+}
+
+table.compact td {
+  border:none;
+  height:1rem;
+  line-height:1rem;
+  font-size:0.75rem;
+}
+
+table.compact td strong {
+  font-weight:400;
+  color:#404040;
+}
+
+table.compact tr:hover {
+  background-color: $color-table-row-hover;
+  cursor:default;
+}
+
+table.compact tbody tr.withSidebarNote {
+  border-bottom: none;
+}
+
+
+table.compact tbody tr.sidebarNote td {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  padding-bottom: 0.25rem;
+  padding-left: 20px;
+}
+
+table.compact tbody tr.sidebarNote td:before {
+  content: "\e617";
+  font-family: $font-icons;
+  font-size: 8px;
+  padding-top: 2px;
+  padding-left: 2px;
+  line-height: 1;
+  color: #2DB3DF;
+  background-color: #D5ECFE;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  float: left; 
+  margin-right: 4px;
+  margin-left: -16px;
+  margin-top: 2px;
+}
+
+table.compact tbody tr.sidebarNote.error td {
+  font-size: 0.75rem;
+  color: #E53411;
+  line-height: 1rem;
+  padding-bottom: 0.25rem;
+  padding-left: 20px;
+}
+
+table.compact tbody tr.sidebarNote.error td:before {
+  content: "\e612";
+  color: #000000;
+  font-size: 22px;
+  text-indent: -11px;
+  line-height: 14px;
+  background: none;
+  border-radius: 0px;
+  width: 0px;
+  height: 0px;
+  padding: 0px;
+  overflow: visible;
+  border-bottom: solid 12px #FFD200;
+  border-left: solid 6px transparent;
+  border-right: solid 6px transparent;
+  border-top: none;
+  margin-top: 1px;
+  margin-left: -16px;
+  margin-right: 4px;
+
+}
+
+/************** Table footer (Without DataTables.js) ****************/
+
+.tableFooter {
+  overflow-y: auto;
+}
+
+.tableFooter .tableFooterInfo {
+  display:inline-block;
+  float:left;
+  text-align: left;
+  color: $color-dark-text;
+  margin-top: 0.6875rem;
+  padding-left: 0.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.tableFooter .tableFooterPaginate {
+  display: block;
+  text-align:center;
+  white-space: nowrap;
+  margin-top: 0.5rem;
+}
+
+.tableFooter .tableFooterPaginate button,
+.tableFooter .tableFooterPaginate a {
+  display:inline-block;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  text-indent: 40px;
+  overflow: hidden;
+}
+
+.tableFooter .tableFooterPaginate button:before,
+.tableFooter .tableFooterPaginate a:before {
+  display: block;
+  font-family: $font-icons;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 32px;
+  text-indent: 0px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.tableFooter .tableFooterPaginate button:active,
+.tableFooter .tableFooterPaginate a:active {
+  border-bottom: none;
+  margin-top:2px;
+  height:30px;
+}
+
+
+.tableFooter .tableFooterPaginate button.next:before,
+.tableFooter .tableFooterPaginate a.next:before {
+  margin-left: 1px;
+  content: "\e606";
+}
+
+.tableFooter .tableFooterPaginate button.previous:before,
+.tableFooter .tableFooterPaginate a.previous:before {
+  margin-left: -1px;
+  content: "\e605";
+}
+
+/*.tableFooter .tableFooterPaginate button.next:disabled,
+.tableFooter .tableFooterPaginate a.next.disabled {
+  background-image:url(<%= image_path "icons/icon-next-disabled.png" %>);
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.tableFooter .tableFooterPaginate button.previous:disabled,
+.tableFooter .tableFooterPaginate a.previous.disabled {
+  background-image:url(<%= image_path "icons/icon-previous-disabled.png" %>);
+  background-repeat:no-repeat;
+  background-position:center;
+}*/
+
+.tableFooter .tableFooterRowsPerPage {
+  display:inline-block;
+  text-align: right;
+  float: right;
+  color: #404040;
+  margin-top: 0.25rem;
+  padding-right: 0.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 400;  
+}
+
+.tableFooter .tableFooterRowsPerPage select {
+  width: auto;  
+}
+
+/****** Load More Rows Control ********/
+
+.loadMoreRows {
+  background-color: $color-keyline-light;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: $color-keyline-dark;
+  padding: 6px 0;
+}
+
+.loadMoreRows:hover {
+  color: #656565;
+}
+
+.loadMoreRows:active {
+  background-color: #DDDDDD;
+}
+
+
+
+/***************** Table Header Sort Links (Without DataTables.js) ****************/
+
+th a.sort_link,
+th a.sort_link:hover,
+th a.sort_link:visited,
+th a.sort_link:active {
+  font-weight:400;
+  color: #404040;
+  text-decoration:none;
+  display:block;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+
+
+}
+
+th a.sort_link:after {
+  position: absolute;
+  right: 0px;
+  top: 4px;
+  width: 10px;
+  height: 16px;
+  font-family: $font-icons;
+  font-size: 16px;
+  line-height: 16px;
+  display: inline-block;
+  overflow: hidden;
+  color: $color-icon-medium;
+  content: "\e607";
+  text-indent: -3px;
+}
+
+th.leftJustify a.sort_link,
+th.rightJustify a.sort_link {
+  padding-left: 0;
+}
+
+
+th a.sort_link.asc:after {
+  content: "\e608";
+  color: $color-icon-dark;
+}
+
+th a.sort_link.desc:after {
+  content: "\e609";
+  color: $color-icon-dark;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables custom top
+ */
+
+.dataTablesCustomTop {
+  overflow-y:auto;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting,
+.sorting_asc,
+.sorting_desc {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.leftJustify.sorting,
+th.leftJustify.sorting_asc,
+th.leftJustify.sorting_desc,
+th.rightJustify.sorting,
+th.rightJustify.sorting_asc,
+th.rightJustify.sorting_desc {
+  padding-left: 5px;
+}
+
+
+.sorting:before,
+.sorting_asc:before,
+.sorting_desc:before {
+  display: block;
+  width: 16px;
+  height: 16px;
+  padding-top: 4px;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: $font-icons;
+  float:right;
+  margin-right: -18px;
+}
+
+.thinnestRows .sorting:before,
+.thinnestRows .sorting_asc:before,
+.thinnestRows .sorting_desc:before {
+  padding-top: 0px;
+}
+
+.thinnerRows .sorting:before,
+.thinnerRows .sorting_asc:before,
+.thinnerRows .sorting_desc:before {
+  padding-top: 2px;
+}
+
+.sorting:before {
+  content: "\e607";
+  color: $color-icon-medium;
+}
+
+.sorting_asc:before {
+  content: "\e608";
+  color: $color-icon-dark;
+}
+
+.sorting_desc:before {
+  content: "\e609";
+  color: $color-icon-dark;
+}
+
+
+.sorting:hover,
+.sorting_asc:hover,
+.sorting_desc:hover {
+  cursor: pointer;
+  background-color: $color-table-row-hover;
+}
+
+.sorting:active,
+.sorting_asc:active,
+.sorting_desc:active {
+  background-color: $color-table-row-selected;
+}
+
+
+.sorting_asc_disabled {
+  padding-right: 20px;
+	background-image: url(<%= image_path "icons/icon-sort-asc-disabled.png" %>);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+.sorting_desc_disabled {
+  padding-right: 20px;
+	background-image: url(<%= image_path "icons/icon-sort-desc-disabled.png" %>);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables filtering
+ */
+
+.dataTables_filter {
+	float:right;
+	margin-bottom:0.375rem;
+
+  background-color: #f4f2ea;
+  padding: 0.375rem 0.5625rem;
+  border: solid 2px #D6D2C4;
+  line-height:1.5rem;
+
+/*	-webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.75) inset;
+	-moz-box-shadow:    0px 1px 1px 0px rgba(50, 50, 50, 0.75) inset;
+	box-shadow:         0px 1px 1px 0px rgba(50, 50, 50, 0.75) inset;*/
+
+/*	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;*/
+
+}
+
+/*
+  This supports the table-search directive that mimics
+  the search behaviour of dataTables_filter.
+*/
+.tableSearch {
+  height: 3rem;
+}
+
+
+.dataTables_filter label {
+  margin-bottom:0px;
+  margin-right:0.25rem;
+}
+
+.dataTables_filter label * {
+  /*vertical-align:middle;*/
+}
+
+.dataTables_filter input:not([type=checkbox]):not([type=radio]),
+html.ie .dataTables_filter input:not([type=checkbox]):not([type=radio]),
+.dataTables_filter input[type=search] {
+	background-color: $color-form-element-background;
+	border: none;
+	padding:0rem;
+  padding-right:0.375rem;
+  padding-left:0.375rem;
+	margin:0rem;
+	font-size:1rem;
+	font-family: $font-body;
+	color:	$color-dark-text;
+	font-weight:400;
+	vertical-align:middle;
+  width:12rem;
+  -webkit-appearance: none;
+  min-height: 0;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
+  border-radius: none;
+
+  display:inline;
+
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+}
+
+.dataTables_filter input:focus {
+	outline: none;
+}
+
+.dataTables_filter input::-webkit-search-cancel-button {
+    display:none;
+}
+
+.dataTables_filter input::-ms-clear {
+    display: none;
+}
+
+.dataTables_filter img {
+    border:none;
+}
+
+.dataTables_filter img.searchIcon {
+    float:left;
+    margin-top:0.375rem;
+    position: relative;
+    background-image:url(<%= image_path "icons/icon-search.png" %>);
+    background-repeat:no-repeat;
+}
+
+.dataTables_filter img.clearSearch {
+    float:right;
+    margin-top:0.375rem;
+    background-image:url(<%= image_path "icons/icon-close.png" %>);
+    background-repeat:no-repeat;
+	cursor:pointer;
+	opacity:1;
+}
+
+.dataTables_filter img.hideClearSearchButton {
+	cursor:default;
+	opacity:0;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables pagination
+ */
+
+.dataTablesCustomBottom {
+    text-align:center;
+	/*border-top:solid 2px $color-keyline-dark;*/
+  margin-top:0.375rem;
+
+}
+
+.dataTables_paginate {
+	/*float:right;*/
+	white-space: nowrap;
+	/*margin-top:0.75rem;*/
+}
+
+.dataTables_length {
+	width:40%;
+	text-align:right;
+	float:right;
+	color: $color-dark-text;
+	/*margin-top:0.375rem;*/
+	padding-right:0.3rem;
+}
+
+.dataTables_length select {
+    width:5rem;
+    text-align: center;
+}
+
+.dataTables_length label {
+  margin-right: 0px;
+}
+
+.dataTables_info {
+	width:40%;
+	float:left;
+	text-align:left;
+	color:#404040;
+	margin-top:0.375rem;
+	padding-left:0.3rem;
+}
+
+
+.dataTables_paginate a {
+	font-family: $font-body;
+	font-weight: 700;
+	color: #FFFFFF;
+	font-size: 1rem;
+	text-transform:uppercase;
+  width:32px;
+  height:32px;
+	background-color: $color-actionable;
+	border-top:none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 2px darken($color-actionable, 15%);
+	text-decoration:none;
+	margin-left:0.125rem;
+	margin-right:0.125rem;
+  margin-top: 0.125rem;
+	display:inline-block;
+	overflow:hidden;
+	color: rgba(255,255,255,0.00);
+  text-indent: 40px;
+	border-radius: 5px;
+}
+
+.dataTables_paginate a:before {
+  display: block;
+  font-family: $font-icons;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 32px;
+  text-indent: 0px;
+  color: #FFFFFF;
+  text-align: center;  
+}
+
+.dataTables_paginate a:hover {
+	background-color: $color-actionable-hover;
+  border-bottom-color: darken($color-actionable-hover, 15%);
+	cursor:pointer;
+}
+
+.dataTables_paginate a:active {
+	background-color: $color-actionable-active;
+  border-bottom: none;
+  height: 30px;
+  margin-top: 2px;
+}
+
+.dataTables_paginate a:focus {
+	outline: none;
+}
+
+.dataTables_paginate a.next:before {
+  margin-left: 1px;  
+  content: "\e606";
+}
+
+.dataTables_paginate a.previous:before {
+  margin-left: -1px;
+  content: "\e605";
+}
+
+.dataTables_paginate a.next.disabled,
+.dataTables_paginate a.previous.disabled {
+	background-color: $color-actionable-disabled;
+  border-bottom-color: darken($color-actionable-disabled, 10%);
+	cursor:default;
+  opacity: 0.5;
+}
+
+
+
+@media screen
+    and (max-device-width: 768px) {
+
+    table {
+        display: block;
+    }
+
+    td, th {
+        min-width:6.5rem;
+    }
+
+    tbody tr.bodyRowSelected {
+        background-color:#D5ECFE;
+    }
+
+}
+
+@media screen and (max-device-width : 1024px) {
+    .dataTables_filter img.searchIcon, .dataTables_filter img.clearSearch {
+        background-position:center center;
+        width:20px;
+        height:20px;
+        /*margin-top:0.6rem; */
+    }
+
+}
+
+@media screen
+    and (max-width : 768px) {
+
+    .dataTables_filter {
+        float:none;
+        margin-top:0.375rem;
+        margin-left:0rem;
+        width:100%;
+        padding:0rem;
+        padding-left:0.375rem;
+        padding-right:0.375rem;
+        position:relative;
+
+    }
+
+    .dataTables_filter label {
+        width:100%;
+        max-width:100%;
+    }
+
+    .dataTables_filter input:not([type=checkbox]):not([type=radio]) {
+        width:100%;
+        max-width:100%;
+        margin:0rem;
+        padding:0rem;
+        padding-left:1.375rem;
+        padding-right:1.375rem;
+
+        box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    .dataTables_filter img.searchIcon {
+        float:none;
+        position:absolute;
+        left:8px;
+        margin-top:0.4rem;
+    }
+
+    .dataTables_filter img.clearSearch {
+        float:none;
+        position:absolute;
+        right:8px;
+        margin-top:0.4rem;
+    }
+
+    .dataTables_wrapper {
+        overflow:scroll;
+    }
+
+    .tableContainer .hideMobile {
+        display:none;
+    }
+
+
+    .dataTables_length {
+        width:100%;
+        text-align:center;
+        float:none;
+        padding-left:0rem;
+        padding-right:0rem;
+    }
+
+    .dataTables_length select {
+        width:3.5rem;
+        max-width:3.5rem;
+    }
+
+    .dataTables_info {
+        width:100%;
+        text-align:center;
+        float:none;
+        padding-left:0rem;
+        padding-right:0rem;
+    }
+}
+
+/* SAM Asset Details Ad List Table */
+
+  table.adsList tbody tr td.buttonCell {
+    padding-top:0px;
+    padding-bottom: 0px;
+  }
+
+  table.adsList tr button {
+    opacity: 0;
+  }
+
+  table.adsList tr:hover button {
+    opacity: 1;
+  }
+
+
+  table.adsList tr.campaignRow {
+    border-top: solid 2px #ACACAC;
+    cursor: pointer;
+  }
+
+
+  table.adsList tbody tr td {
+    font-weight: 300;
+    color: $color-body-text;
+
+  }
+  table.adsList tbody tr.statusActive td {
+    color: #404040;
+    font-weight: 700;
+  }
+
+  table.adsList tbody tr.campaignRow .expandToggle {
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    margin-right: 4px;
+    border-left: solid 6px #00A9CE;
+    border-top: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+  }
+
+  table.adsList tbody tr.campaignRow .expandToggle:hover {
+    border-left-color: #1BCDF4;
+  }
+
+  table.adsList tbody tr.campaignRow .expandToggle:active {
+    border-left-color: #14789D;
+  }
+
+
+  table.adsList tbody tr.campaignRow .expandToggle.toggled {
+    border: none;
+    margin: 0;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 10px;
+    height: 6px;
+    border-top: solid 6px #00A9CE;
+    border-left: solid 5px transparent;
+    border-right: solid 5px transparent;
+  }
+
+  table.adsList tbody tr.campaignRow .expandToggle.toggled:hover {
+    border-left-color: transparent;
+    border-top-color: #1BCDF4;
+  }
+
+  table.adsList tbody tr.campaignRow .expandToggle.toggled:active {
+    border-left-color: transparent;
+    border-top-color: #14789D;
+  }
+
+  table.adsList tbody tr.campaignRow td:first-child {
+    position: relative;
+    padding-left: 1.875rem;
+  }
+
+  table.adsList tbody tr.campaignRow td:first-child:before {
+    content: " ";
+    position: absolute;
+    width: 13px;
+    height: 7px;
+    background-image: url(<%= image_path "ui/accordion-arrow-sprite.png" %>);
+    background-position: 0px -10px;
+    top: 1rem;
+    left: 0.5rem;
+  }
+
+  table.adsList tbody tr.campaignRow.expanded td:first-child:before {
+    background-position: 0px 0px;
+    top: 1.0625rem;
+    left: 0.5rem;
+  }
+
+
+  table.adsList tbody tr.adRow td {
+    font-style: italic;
+  }
+
+  table.adsList tbody tr.adRow td:first-child {
+    padding-left: 3.25rem;
+  }
+
+
+  table.selectableRows.adsList tbody tr.adRow td:first-child {
+    padding-left: 3.25rem;
+  }
+
+  table.selectableRows.adsList tbody tr.adRow td:first-child:before {
+    margin-left: 1.5rem;
+  }
+
+  table.selectableRows.adsList tbody tr.adRow.statusExpired td:first-child:before {
+    content: none;
+  }
+
+  table.selectableRows.adsList tbody tr.adRow.statusExpired td:first-child {
+    padding-left: 1.875rem;
+  }
+
+
+
+  /*table.adsList tbody tr.statusPaused,*/
+  table.adsList tbody tr.statusExpired {
+    background-color: #F5F5F5;
+  }
+
+  /*table.adsList tbody tr.statusPaused td,*/
+  table.adsList tbody tr.statusExpired td,
+  table.adsList tbody tr.adRow.statusExpired:hover {
+    color: #999999;
+  }  
+
+  table.adsList tbody tr.adRow.statusExpired {
+    cursor: default;
+  }
+
+  table.adsList tbody tr.statusPaused:hover,
+  table.adsList tbody tr.campaignRow.statusExpired:hover {
+    background-color: #E9F6FA;
+  }
+
+
+  table.adsList tbody tr.adRow.bodyRowSelected,
+  table.adsList tbody tr.adRow.statusPaused.bodyRowSelected, 
+  table.adsList tbody tr.adRow.statusExpired.bodyRowSelected {
+    background-color: #D5EBF3;
+  }
+
+
+/** high resolution screen support **/
+@media
+    (min--moz-device-pixel-ratio: 2.0),
+    (-o-min-device-pixel-ratio: 4.0/2),
+    (-webkit-min-device-pixel-ratio: 2.0),
+    (min-device-pixel-ratio: 2.0),
+    (min-resolution: 2.0dppx) {
+
+        thead th select {
+            background-image:url(<%= image_path "icons/icon-filter@2x.png" %>);
+            background-repeat:no-repeat;
+            background-size:12px 9px;
+        }
+
+        .dataTables_filter img.searchIcon {
+            background-image:url(<%= image_path "icons/icon-search@2x.png" %>);
+            background-repeat:no-repeat;
+            background-size:15px 15px;
+        }
+
+        .dataTables_filter img.clearSearch {
+            background-image:url(<%= image_path "icons/icon-close@2x.png" %>);
+            background-repeat:no-repeat;
+            background-size:15px 15px;
+        }
+
+        table.deleteColumns th > div.columnDelete {
+          background-image: url(<%= image_path "icons/icon-delete_sm@2x.png" %>);
+          background-repeat: no-repeat;
+          background-size: 9px 9px;
+        }
+
+
+        table.selectableRows.adsList tbody tr.campaignRow td:first-child:before {
+          background-image: url(<%= image_path "ui/accordion-arrow-sprite@2x.png" %>);
+          background-size: 70px 17px;
+        }
+
+        tbody tr:hover span.withHoverPreview:after {
+          background-image:url(<%= image_path "icons/icon-search@2x.png" %>);
+          background-size: 15px 15px;
+        }
+   
+}

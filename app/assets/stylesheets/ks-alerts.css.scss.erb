@@ -1,0 +1,578 @@
+@import "_variables.scss";
+
+/*
+    Alerts are asynchronous notifications to be used in the following
+
+      - informational - as it sounds, you just want to let the user know something.
+          This is the default state.
+
+      - task complete - use this to inform the user that an asynchronous task they started has completed.
+          Use the .taskComplete modifier.
+
+      - warning - to be used when problems arise, but do not need immediate action from the user.  For example, a task completed, but with some minor errors.
+          Use the .warning modifier.
+
+      - error - to be used when problems arise requiring immediate attention.  This should be used sparingly!  We do not want to get into a "KSP who cried wolf" scenario.
+          Use the .error modifier.
+
+
+    Alerts are always displayed in a fixed position, by default in the top-center of the screen.  they can be repositioned with the following modifiers:
+      
+      - .ksAlert.topLeft
+      - .ksAlert.topRight
+      - .ksAlert.bottomLeft
+      - .ksAlert.bottomCenter
+      - .ksAlert.bottomRight
+
+
+
+
+*/
+
+/****** ANIMATIONS *******/
+
+@-webkit-keyframes showFromTop {
+  0% {
+    -webkit-transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+
+@keyframes showFromTop {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes clearFromTop {
+  0% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+
+@keyframes clearFromTop {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes showFromBottom {
+  0% {
+    -webkit-transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+
+@keyframes showFromBottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes clearFromBottom {
+  0% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(50px);
+    opacity: 0;
+  }
+}
+
+
+@keyframes clearFromBottom {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+}
+
+
+@-webkit-keyframes showFromRight {
+  0% {
+    -webkit-transform: translateX(260px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes showFromRight {
+  0% {
+    transform: translateX(260px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes clearFromRight {
+  0% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(260px);
+    opacity: 0;
+  }
+}
+
+@keyframes clearFromRight {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(260px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes showFromLeft {
+  0% {
+    -webkit-transform: translateX(-260px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes showFromLeft {
+  0% {
+    transform: translateX(-260px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes clearFromLeft {
+  0% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-260px);
+    opacity: 0;
+  }
+}
+
+@keyframes clearFromLeft {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-260px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    -webkit-transform: scale(1, 1);
+  }
+  87% {
+    -webkit-transform: scale(1, 1);
+  }
+  88% {
+    -webkit-transform: scale(1.2, 1.2);
+  }
+  92% {
+    -webkit-transform: scale(1, 1);
+  }
+  95% {
+    -webkit-transform: scale(1, 1);
+  }
+  96% {
+    -webkit-transform: scale(1.2, 1.2);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+  }
+}
+
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1, 1);
+  }
+  87% {
+    transform: scale(1, 1);
+  }
+  88% {
+    transform: scale(1.2, 1.2);
+  }
+  92% {
+    transform: scale(1, 1);
+  }
+  95% {
+    transform: scale(1, 1);
+  }
+  96% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+
+
+/************* BASE CLASSES *************/
+.ksAlert {
+  dispaly: block;
+  position: fixed;
+  z-index: $z-index-alert;
+  
+  /* default to top-middle placement */
+  left: 0px;
+  top: 16px;
+  width: 100%;
+  pointer-events: none;
+  height: auto;
+  -webkit-animation: showFromTop 0.5s;
+  animation: showFromTop 0.5s;
+}
+
+.ksAlert .content {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /*border: solid 1px $color-keyline-dark;*/
+  background-color: #FAF9F7;
+  padding: 8px 12px 8px 36px;
+
+  max-width: 650px;
+  margin: auto;
+  pointer-events: all;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow:    0px 2px 2px 0px rgba(0, 0, 0, 0.35);
+  box-shadow:         0px 2px 2px 0px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+
+}
+
+.ksAlert .content:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  left: 9px;
+  background-image: url(<%= image_path "icons/icon-info.png" %>); /* default is "i" icon for informational */
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: pulsate 5s infinite;
+  animation: pulsate 5s infinite;
+}
+
+.ksAlert .content h6 {
+  text-transform: none;
+  letter-spacing: 0px;
+  font-weight: 400;
+  margin-right: 20px;
+  color: $color-dark-text;
+}
+
+.ksAlert .content p {
+  font-size: $small-text-size;
+  line-height: 1rem;
+  margin-bottom: 0.75rem;
+  margin-bottom: 0;
+}
+
+.ksAlert .content .closeButton {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 20px;
+  color: #b1b1af;
+
+  &:visited {
+    text-decoration: none;
+    color: #b1b1af;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: #969694;
+  }
+
+  &:active {
+    text-decoration: none;
+    color: #666665;
+  }
+}
+
+.ksAlert .content .closeButton:before {
+  content: "\00D7";  /* "times" character */
+  font-weight: 400;
+}
+
+.ksAlert.remove {
+  -webkit-animation: clearFromTop 0.2s;
+  animation: clearFromTop 0.2s;
+  opacity: 0; /* this avoids a flash at the end of the animation */
+}
+
+
+/******* POSITION MODIFIERS ********/
+
+/* top Right */
+.ksAlert.topRight {
+  width: 250px;
+  top: 16px;
+  right: 16px;
+  left: auto;
+  bottom: auto;
+  -webkit-animation: showFromRight 0.5s;
+  animation: showFromRight 0.5s;
+
+}
+
+.ksAlert.topRight.remove {
+  -webkit-animation: clearFromRight 0.2s;
+  animation: clearFromRight 0.2s;
+}
+
+/* top left */
+.ksAlert.topLeft {
+  width: 250px;
+  top: 16px;
+  right: auto;
+  left: 16px;
+  bottom: auto;
+  -webkit-animation: showFromLeft 0.5s;
+  animation: showFromLeft 0.5s;
+
+}
+
+.ksAlert.topLeft.remove {
+  -webkit-animation: clearFromLeft 0.2s;
+  animation: clearFromLeft 0.2s;
+}
+
+
+/* bottom Right */
+.ksAlert.bottomRight {
+  width: 250px;
+  top: auto;
+  right: 16px;
+  left: auto;
+  bottom: 16px;
+  -webkit-animation: showFromRight 0.5s;
+  animation: showFromRight 0.5s;
+
+}
+
+.ksAlert.bottomRight.remove {
+  -webkit-animation: clearFromRight 0.2s;
+  animation: clearFromRight 0.2s;
+}
+
+/* bottom left */
+.ksAlert.bottomLeft {
+  width: 250px;
+  top: auto;
+  right: auto;
+  left: 16px;
+  bottom: 16px;
+  -webkit-animation: showFromLeft 0.5s;
+  animation: showFromLeft 0.5s;
+
+}
+
+.ksAlert.bottomLeft.remove {
+  -webkit-animation: clearFromLeft 0.2s;
+  animation: clearFromLeft 0.2s;
+}
+
+/* bottom center */
+.ksAlert.bottomCenter {
+  left: 0px;
+  top: auto;
+  bottom: 16px;
+  -webkit-animation: showFromBottom 0.5s;
+  animation: showFromBottom 0.5s;
+}
+
+.ksAlert.bottomCenter.remove {
+  -webkit-animation: clearFromBottom 0.2s;
+  animation: clearFromBottom 0.2s;
+}
+
+
+
+
+/******* TYPE MODIFIERS ********/
+
+/* task complete */
+.ksAlert.taskComplete .content {
+  background-color: #D6ECC4;
+}
+
+.ksAlert.taskComplete .content:before {
+  background-image: url(<%= image_path "icons/icon-check-sm.png" %>);
+}
+
+.ksAlert.taskComplete .content .closeButton {
+  color: #91A97F;
+
+  &:visited {
+    color: #91A97F;
+  }
+
+  &:hover {
+    color: #7E936E;
+  }
+
+  &:active {
+    color: #617155;
+  }
+}
+
+/* warning */
+.ksAlert.warning .content {
+  background-color: $color-callout-bg;
+}
+
+.ksAlert.warning .content:before {
+  background-image: url(<%= image_path "icons/icon-error.png" %>);
+  height: 18px;
+  background-size: 20px 18px;
+}
+
+.ksAlert.warning .content .closeButton {
+  color: #CAC77A;
+
+  &:visited {
+    color: #CAC77A;
+  }
+
+  &:hover {
+    color: #B3B180;
+  }
+
+  &:active {
+    color: #8A8863;
+  }
+}
+
+/* warning */
+.ksAlert.error .content {
+  background-color: $color-error-red;
+}
+
+.ksAlert.error .content:before {
+  background-image: url(<%= image_path "icons/icon-error.png" %>);
+  height: 18px;
+  background-size: 20px 18px;
+}
+
+
+.ksAlert.error .content h6 {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.ksAlert.error .content p {
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+
+.ksAlert.error .closeButton {
+  color: #fdaeae;
+
+  &:visited {
+    color: #fdaeae;
+  }
+
+  &:hover {
+    color: #fdd8d8;
+  }
+
+  &:active {
+    color: #7a0d0d;
+  }
+}
+
+
+
+/* High resolution Screen support */
+@media
+  (min--moz-device-pixel-ratio: 2.0),
+  (-o-min-device-pixel-ratio: 4.0/2),
+  (-webkit-min-device-pixel-ratio: 2.0),
+  (min-device-pixel-ratio: 2.0),
+  (min-resolution: 2.0dppx) {
+
+  .ksAlert .content:before {
+    background-image: url(<%= image_path "icons/icon-info@2x.png" %>);
+  }
+
+  .ksAlert.taskComplete .content:before {
+    background-image: url(<%= image_path "icons/icon-check-sm@2x.png" %>);
+  }
+
+  .ksAlert.warning .content:before,
+  .ksAlert.error .content:before {
+    background-image: url(<%= image_path "icons/icon-error@2x.png" %>);
+  }
+
+
+}

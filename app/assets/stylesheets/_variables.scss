@@ -1,0 +1,91 @@
+/***** Fonts ******/
+$font-heading: "Arquitecta";
+$font-body: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$font-fixed-width: Monaco, "Lucida Console", "Lucida Sans Typewriter", Consolas, "Andale Mono", "Courier New", Courier, monospace;
+$font-basic-sans-serif: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$font-icons: "KSP-Icons";
+
+
+/***** Colors *****/
+$color-body-background: #FFFFFF;
+$color-header-background: #554F4E; /* Was Kinetic Dark Grey #6C6463 */
+$color-footer-background: #554F4E;
+$color-page-wrap-background: #6C6463;
+
+$color-body-text: #5C5C5C; /* was Kinetic Dark Grey #6C6463 */
+$color-heading-text: #6C6463;
+$color-dark-text: #404040;
+$color-error-text: #DB1717;
+
+$color-main-nav-links: #FAF4EA;
+$color-main-nav-links-hover: #FAF4EA;
+$color-main-nav-links-active: #FAF4EA;
+$color-main-nav-links-separator: #897F7E;
+
+$color-actionable: #00A9CE; /* Kinetic Medium Blue */
+$color-actionable-hover: #1BCDF4;
+$color-actionable-active: #14789D;
+$color-actionable-disabled: #D6D6D6;
+$color-actionable-destructive: #DB1717;
+$color-actionable-destructive-hover: #FF2B2B;
+$color-actionable-destructive-active: #A30808;
+
+$color-links-on-dark: #7DE8FF;
+
+$color-icon-medium: #898989;
+$color-icon-dark: #404040;
+$color-icon-light: #FAF4EA;
+
+$color-form-element-background: #F4F2EA;
+$color-form-element-border: #D6D2C4;
+$color-form-element-text: #404040;
+$color-form-element-placeholder-text: #C7C3B6;
+$color-form-element-required: #DB1717;
+
+$color-keyline-dark: #ACACAC;
+$color-keyline-light: #E8E8E8;
+$color-callout-bg: #FDFBCE;
+$color-error-red: #DB1717;
+$color-search-highlight: #FDF98C;
+
+$color-table-header-background: #E8E6DD;
+$color-table-row-hover: #E9F6FA;
+$color-table-row-selected: #D5EBF3;
+
+$color-large-accordion-toggle-matte: #EAE9E6; /*#E8E8E8;*/
+
+/* Explicit Kinetic Color Definitions */
+$color-ks-orange: #E57200;
+$color-ks-dark-grey: #6C6463;
+$color-ks-medium-grey: #D6D2C4;
+$color-ks-light-beige: #FAF4EA;
+$color-ks-black: #000000;
+$color-ks-white: #FFFFFF;
+$color-ks-yellow: #FFC72C;
+$color-ks-bright-green: #C4D600;
+$color-ks-purple: #686E9F;
+$color-ks-light-blue: #88DBDF;
+$color-ks-medium-blue: #00A9CE;
+$color-ks-teal: #009B77;
+
+
+/* typographic scale */
+$normal-text-size: 1rem;
+$small-text-size: 0.75rem;
+$baseline-scale: 1.5rem;
+$three-quarter-baseline-scale: 1.125rem;
+$half-baseline-scale: 0.75rem;
+$quarter-baseline-scale: 0.375rem; 
+
+/* z-index management */
+$z-index-nav: 2000;
+$z-index-floating-menu: 1800;
+$z-index-dialog: 3000;
+$z-index-form-element: 3500;
+$z-index-tooltip: 4000;
+$z-index-drop-menu: 4000;
+$z-index-alert: 2500;
+$z-index-wait-icon: 5000;
+$z-index-wait-icon-under-floating-menu: 1500;
+
+

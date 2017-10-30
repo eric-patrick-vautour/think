@@ -1,0 +1,1323 @@
+/* CSS Document */
+@import "../_variables.scss";
+
+fieldset {
+  border:solid 1px $color-form-element-border;
+  padding:1.5rem 1rem;
+  margin-bottom:3rem;
+  min-width: 0;
+}
+
+legend {
+  font-size:1rem;
+  font-weight:400;
+  letter-spacing: 0.0625rem;
+  text-transform: uppercase;
+  color: $color-form-element-text;
+  padding:0rem 0.375rem;
+  margin-left:-0.375rem;
+}
+
+.inputGroup {
+  padding:0rem;
+  margin:0rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup li {
+  padding:0rem;
+  margin:0rem;
+  list-style:none;
+}
+
+.inputGroup li:before {
+  content:none;
+}
+
+.inputGroup li label {
+  margin:0rem;
+  padding:0rem;
+}
+
+.required  {
+  font-weight:700;
+  color: $color-form-element-required;
+}
+
+label + .required {
+  margin-left: -1.5rem; /* account for extra margin added to left side of all labels */
+}
+
+label {
+  /*display: inline-block;*/
+  /*margin-bottom: 0.25rem;*/
+  line-height: 1.5rem;
+  max-width:40rem;
+  cursor:pointer;
+  margin-right:1.5rem;
+}
+
+label.leftMargin {
+  margin-left:1.5rem;
+}
+
+/*
+  explicit disabled state for labels
+*/
+label.disabled {
+  cursor:default;
+  opacity:0.3;
+}
+
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=range],
+input[type=file],
+select,
+textarea {
+  width: 100%;
+  max-width: 25rem;
+  display: inline-block;
+  margin-bottom: 0rem;
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: 1rem;
+  color: $color-form-element-text;
+  border: none;
+  background-color: $color-form-element-background;
+  padding: 0.25rem 0.5625rem;
+  margin: 0.125rem 0;
+  border: solid 2px $color-form-element-border;
+  line-height:1.5rem;
+  vertical-align:middle;
+  min-height: 2.625rem;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* needed for mobile safari */
+  -webkit-border-radius: 0px;  
+
+}
+
+input.whiteField,
+select.whiteField {
+  background-color: #FFFFFF;
+}
+
+ks-editable.whiteField input {
+  background-color: #FFFFFF;
+}
+
+
+/* Firefox does not render a focus ring
+   around a styled input field.  So we
+   need to add our own for accessibility.
+   We'll mimmick Chrome's blue glow. */
+@-moz-document url-prefix() {
+  input:not([type]):focus,
+  input[type=text]:focus,
+  input[type=password]:focus,
+  input[type=email]:focus,
+  input[type=number]:focus,
+  select:focus,
+  textarea:focus {
+    box-shadow: 0 0 3px 2px rgba(54, 136, 238, 1); 
+  }
+}
+
+input:not([type]).inlineEditField,
+input[type=text].inlineEditField,
+input[type=password].inlineEditField,
+input[type=email].inlineEditField,
+input[type=number].inlineEditField,
+select.inlineEditField {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: none;
+  line-height: 1rem;
+  height: 1.5rem;
+  min-height: 1.5rem;
+  vertical-align: inherit;
+  border: solid 1px $color-form-element-border;
+  margin: 0;
+}
+
+select.inlineEditField {
+  background-position: top -88px right -160px;
+}
+
+input:not([type]).inlineEditField.dollarField,
+input[type=text].inlineEditField.dollarField,
+input[type=password].inlineEditField.dollarField,
+input[type=email].inlineEditField.dollarField,
+input[type=number].inlineEditField.dollarField {
+  background-position: left -242px top -205px;
+}
+
+input:not([type]).inlineEditField.percentField,
+input[type=text].inlineEditField.percentField,
+input[type=password].inlineEditField.percentField,
+input[type=email].inlineEditField.percentField,
+input[type=number].inlineEditField.percentField {
+  background-position: right -202px top -48px;
+}
+
+/* HTML5 allows any element to be user editable user the contenteditable="true" attribute.
+   For those elements, we add the class editable element to make the element look like
+   a form field */
+.editableElement {
+  width: 25rem;
+  display: inline-block;
+  margin-bottom: 0rem;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #404040;
+  border: none;
+  background-color: #F4F2EA;
+  padding: 0.375rem 0.5625rem;
+  border: solid 2px #D6D2C4;
+  line-height:1.5rem;
+  vertical-align:middle;
+  min-height: 4.5rem;
+}
+
+
+/* 
+   need to provide a hack for Chrome... when copying/pasting from one .editableElement to
+   another, Chrome thinks it needs to copy styles as well, unless those styles are provided
+   here.  For some reason, Chrome copies plain text and wraps them in a span with with inline
+   style of word-spacing: 0.845px.  By explicitly specifying that style here, Chrome will copy
+   the content as-is.
+*/
+.editableElement > span[style] {
+  word-spacing: 0.845px;
+}
+
+input:not([type]).quarterLength,
+input[type=text].quarterLength,
+input[type=password].quarterLength,
+input[type=email].quarterLength,
+input[type=number].quarterLength,
+input[type=range].quarterLength,
+select.quarterLength,
+textarea.quarterLength,
+.stackedInput input:not([type]).quarterLength,
+.stackedInput input[type=text].quarterLength,
+.stackedInput input[type=password].quarterLength,
+.stackedInput input[type=email].quarterLength,
+.stackedInput input[type=number].quarterLength,
+.stackedSelect select.quarterLength,
+.bigContainer .mainColumn .stackedInput textarea.quarterLength,
+.bigContainer .mainColumn .stackedInput input:not([type]).quarterLength,
+.bigContainer .mainColumn .stackedInput input[type=text].quarterLength,
+.bigContainer .mainColumn .stackedInput input[type=password].quarterLength,
+.bigContainer .mainColumn .stackedInput input[type=email].quarterLength,
+.bigContainer .mainColumn .stackedInput input[type=number].quarterLength,
+.bigContainer .mainColumn .stackedSelect select.quarterLength,
+.bigContainer .mainColumn .stackedInput textarea.quarterLength
+{
+  max-width: 6.25rem;
+}
+
+input:not([type]).halfLength,
+input[type=text].halfLength,
+input[type=password].halfLength,
+input[type=email].halfLength,
+input[type=number].halfLength,
+input[type=range].halfLength,
+select.halfLength,
+textarea.halfLength,
+.stackedInput input:not([type]).halfLength,
+.stackedInput input[type=text].halfLength,
+.stackedInput input[type=password].halfLength,
+.stackedInput input[type=email].halfLength,
+.stackedInput input[type=number].halfLength,
+.stackedSelect select.halfLength,
+.stackedInput textarea.halfLength,
+.bigContainer .mainColumn .stackedInput input:not([type]).halfLength,
+.bigContainer .mainColumn .stackedInput input[type=text].halfLength,
+.bigContainer .mainColumn .stackedInput input[type=password].halfLength,
+.bigContainer .mainColumn .stackedInput input[type=email].halfLength,
+.bigContainer .mainColumn .stackedInput input[type=number].halfLength,
+.bigContainer .mainColumn .stackedSelect select.halfLength,
+.bigContainer .mainColumn .stackedInput textarea.halfLength
+{
+  max-width: 12.5rem;
+}
+
+input:not([type]).threeQuarterLength,
+input[type=text].threeQuarterLength,
+input[type=password].threeQuarterLength,
+input[type=email].threeQuarterLength,
+input[type=number].threeQuarterLength,
+input[type=range].threeQuarterLength,
+select.threeQuarterLength,
+textarea.threeQuarterLength,
+.stackedInput input:not([type]).threeQuarterLength,
+.stackedInput input[type=text].threeQuarterLength,
+.stackedInput input[type=password].threeQuarterLength,
+.stackedInput input[type=email].threeQuarterLength,
+.stackedInput input[type=number].threeQuarterLength,
+.stackedSelect select.threeQuarterLength,
+.stackedInput textarea.threeQuarterLength,
+.bigContainer .mainColumn .stackedInput input:not([type]).threeQuarterLength,
+.bigContainer .mainColumn .stackedInput input[type=text].threeQuarterLength,
+.bigContainer .mainColumn .stackedInput input[type=password].threeQuarterLength,
+.bigContainer .mainColumn .stackedInput input[type=email].threeQuarterLength,
+.bigContainer .mainColumn .stackedInput input[type=number].threeQuarterLength,
+.bigContainer .mainColumn .stackedSelect select.threeQuarterLength,
+.bigContainer .mainColumn .stackedInput textarea.threeQuarterLength
+{
+  max-width: 18.75rem;
+}
+
+.stackedInput input:not([type]).fullLength,
+.stackedInput input[type=text].fullLength,
+.stackedInput input[type=password].fullLength,
+.stackedInput input[type=email].fullLength,
+.stackedInput input[type=number].fullLength,
+.stackedInput input[type=range].fullLength,
+.stackedSelect select.fullLength,
+.bigContainer .mainColumn .stackedInput textarea.fullLength,
+.bigContainer .mainColumn .stackedInput input:not([type]).fullLength,
+.bigContainer .mainColumn .stackedInput input[type=text].fullLength,
+.bigContainer .mainColumn .stackedInput input[type=password].fullLength,
+.bigContainer .mainColumn .stackedInput input[type=email].fullLength,
+.bigContainer .mainColumn .stackedInput input[type=number].fullLength,
+.bigContainer .mainColumn .stackedSelect select.fullLength,
+.bigContainer .mainColumn .stackedInput textarea.fullLength
+{
+  max-width: 25rem;
+}
+
+
+input:not([type]).wider,
+input[type=text].wider,
+input[type=password].wider,
+input[type=email].wider,
+input[type=number].wider,
+input[type=range].wider,
+select.wider,
+textarea.wider,
+.stackedInput input:not([type]).wider,
+.stackedInput input[type=text].wider,
+.stackedInput input[type=password].wider,
+.stackedInput input[type=email].wider,
+.stackedInput input[type=number].wider,
+.stackedSelect select.wider,
+.stackedInput textarea.wider,
+.bigContainer .mainColumn .stackedInput input:not([type]).wider,
+.bigContainer .mainColumn .stackedInput input[type=text].wider,
+.bigContainer .mainColumn .stackedInput input[type=password].wider,
+.bigContainer .mainColumn .stackedInput input[type=email].wider,
+.bigContainer .mainColumn .stackedInput input[type=number].wider,
+.bigContainer .mainColumn .stackedSelect select.wider,
+.bigContainer .mainColumn .stackedInput textarea.wider
+{
+  max-width: 37.5rem;
+}
+
+input:not([type]).stretch,
+input[type=text].stretch,
+input[type=password].stretch,
+input[type=email].stretch,
+input[type=number].stretch,
+input[type=range].stretch,
+select.stretch,
+textarea.stretch,
+.stackedInput input:not([type]).stretch,
+.stackedInput input[type=text].stretch,
+.stackedInput input[type=password].stretch,
+.stackedInput input[type=email].stretch,
+.stackedInput input[type=number].stretch,
+.stackedInput input[type=range].stretch,
+.stackedSelect select.stretch,
+.stackedInput textarea.stretch,
+.bigContainer .mainColumn .stackedInput input:not([type]).stretch,
+.bigContainer .mainColumn .stackedInput input[type=text].stretch,
+.bigContainer .mainColumn .stackedInput input[type=password].stretch,
+.bigContainer .mainColumn .stackedInput input[type=email].stretch,
+.bigContainer .mainColumn .stackedInput input[type=number].stretch,
+.bigContainer .mainColumn .stackedInput input[type=range].stretch,
+.bigContainer .mainColumn .stackedSelect select.stretch,
+.bigContainer .mainColumn .stackedInput textarea.stretch
+{
+  max-width: 100%;
+}
+
+input:not([type]).stretch.minusOneIconButton,
+input[type=text].stretch.minusOneIconButton,
+input[type=password].stretch.minusOneIconButton,
+input[type=email].stretch.minusOneIconButton,
+input[type=number].stretch.minusOneIconButton,
+input[type=range].stretch.minusOneIconButton,
+select.stretch.minusOneIconButton,
+textarea.stretch.minusOneIconButton,
+.stackedInput input:not([type]).stretch.minusOneIconButton,
+.stackedInput input[type=text].stretch.minusOneIconButton,
+.stackedInput input[type=password].stretch.minusOneIconButton,
+.stackedInput input[type=email].stretch.minusOneIconButton,
+.stackedInput input[type=number].stretch.minusOneIconButton,
+.stackedInput input[type=range].stretch.minusOneIconButton,
+.stackedSelect select.stretch.minusOneIconButton,
+.stackedInput textarea.stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedInput input:not([type]).stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedInput input[type=text].stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedInput input[type=password].stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedInput input[type=email].stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedInput input[type=number].stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedInput input[type=range].stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedSelect select.stretch.minusOneIconButton,
+.bigContainer .mainColumn .stackedInput textarea.stretch.minusOneIconButton
+{
+  max-width: calc(100% - 40px);
+}
+
+
+input:not([type]).autoWidth,
+input[type=text].autoWidth,
+input[type=password].autoWidth,
+input[type=email].autoWidth,
+input[type=number].autoWidth,
+input[type=range].autoWidth,
+select.autoWidth,
+textarea.autoWidth,
+.stackedInput input:not([type]).autoWidth,
+.stackedInput input[type=text].autoWidth,
+.stackedInput input[type=password].autoWidth,
+.stackedInput input[type=email].autoWidth,
+.stackedInput input[type=number].autoWidth,
+.stackedInput input[type=range].autoWidth,
+.stackedSelect select.autoWidth,
+.bigContainer .mainColumn .stackedInput textarea.autoWidth,
+.bigContainer .mainColumn .stackedInput input:not([type]).autoWidth,
+.bigContainer .mainColumn .stackedInput input[type=text].autoWidth,
+.bigContainer .mainColumn .stackedInput input[type=password].autoWidth,
+.bigContainer .mainColumn .stackedInput input[type=email].autoWidth,
+.bigContainer .mainColumn .stackedInput input[type=number].autoWidth,
+.bigContainer .mainColumn .stackedInput input[type=range].autoWidth,
+.bigContainer .mainColumn .stackedSelect select.autoWidth,
+.bigContainer .mainColumn .stackedInput textarea.autoWidth
+{
+  width: auto;
+  max-width: inital;
+}
+
+input:not([type]).tall,
+input[type=text].tall,
+input[type=password].tall,
+input[type=email].tall,
+input[type=number].tall,
+select.tall,
+textarea.tall {
+  height: 15rem;
+}
+
+input:not([type]).taller,
+input[type=text].taller,
+input[type=password].taller,
+input[type=email].taller,
+input[type=number].taller,
+select.taller,
+textarea.taller {
+  height: 22.5rem;
+}
+
+
+input:not([type]):disabled, input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=number]:disabled, input[type=range]:disabled, select:disabled, textarea:disabled,
+input:not([type]).disabled, input[type=text].disabled, input[type=password].disabled, input[type=email].disabled, input[type=number].disabled, input[type=range].disabled, select.disabled, textarea.disabled {
+  opacity:0.5;
+  cursor:default;
+}
+
+textarea {
+  height:4.25rem;
+}
+
+textarea.audienceList {
+  /*width:12rem;*/
+  height:20rem;
+}
+
+input::-ms-clear, input::-ms-reveal {
+  color:#898989;;
+}
+
+/*
+
+  This normalizes a combination of an input and button side by side
+  to use the same width as a normal input.  All of the standard width
+  modifiers apply except autoWidth.
+
+  Can be used with text-based <input> boxes and <select> drop downs
+
+  Example:
+  <p class="inputPlusButton">
+    <input type="text" />
+    <button>Go</button>
+  </p>
+
+*/
+
+.inputPlusButton {
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-direction: row;
+  flex-direction: row;
+
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+
+  -webkit-align-items: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 25rem
+
+}
+
+.inputPlusButton.quarterLength {
+  max-width: 6.25rem;
+}
+
+.inputPlusButton.halfLength {
+  max-width: 12.5rem;
+}
+
+.inputPlusButton.threeQuarterLength {
+  max-width: 18.75rem;
+}
+
+.inputPlusButton.fullLength {
+  max-width: 25rem;
+}
+
+.inputPlusButton.wider {
+  max-width: 37.5rem;
+}
+
+.inputPlusButton.stretch {
+  max-width: 100%;
+}
+
+.inputPlusButton input:not([type]),
+.inputPlusButton input[type=text],
+.inputPlusButton input[type=password],
+.inputPlusButton input[type=email],
+.inputPlusButton input[type=number],
+.inputPlusButton input[type=range],
+.inputPlusButton input[type=file],
+.inputPlusButton select {
+  min-width: 0;
+  max-width: initial;
+  margin-right: 0.375rem;
+
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.inputPlusButton button,
+.inputPlusButton .button {
+
+  -webkit-flex-grow: 0;
+  flex-grow: 0;
+
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+
+  margin-right: 0.375rem;
+
+}
+
+.inputPlusButton > *:last-child {
+  margin-right: 0;
+}
+
+/*
+
+ Explicit classes to remove added browser controls.
+
+ Normally these are good things, but can sometimes
+ get in the way when creating your own custom logic
+ for form fields.
+ 
+*/
+
+input.noNativeClearControl::-ms-clear {
+  display: none;
+}
+
+input.noNativeRevealControl::-ms-reveal {
+  display: none;
+}
+
+
+/*********** Styles for HTML 5 Range input ***********/
+
+input[type=range] {
+  border: none;
+  height: 1.5rem;
+  padding: 0;
+  background: transparent;
+}
+
+/* Webkit */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: grab;
+  background-color: $color-actionable;
+  width: 20px;
+  height: 20px;
+  border-bottom: solid 2px darken($color-actionable, 15%); 
+  border-radius: 10px;
+  margin-top: -7px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  background-color: $color-form-element-background;
+  border: solid 2px $color-form-element-border;
+  border-radius: 5px;
+  margin: 8px 0px;
+}
+
+/* FireFox */
+input[type=range]::-moz-range-thumb {
+  cursor: grab;
+  background-color: $color-actionable;
+  width: 18px;
+  height: 17px;
+  border: none;
+  border-bottom: solid 2px darken($color-actionable, 15%); 
+  border-radius: 10px;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  background-color: $color-form-element-background;
+  border: solid 2px $color-form-element-border;
+  border-radius: 5px;
+}
+
+/* Internet Explorer */
+input[type=range]::-ms-thumb {
+  cursor: -ms-grab;
+  background-color: $color-actionable;
+  width: 20px;
+  height: 19px;
+  border: none;
+  border-bottom: solid 2px darken($color-actionable, 15%); 
+  border-radius: 10px;
+  margin: 0px 4px;
+}
+
+input[type=range]::-ms-track {
+  height: 10px;
+  overflow: visible;
+  color: transparent;
+  background: transparent;
+  border: none;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 6px 0px;
+}
+input[type=range]::-ms-fill-lower,
+input[type=range]::-ms-fill-upper {
+  background-color: $color-form-element-background;
+  border: solid 2px $color-form-element-border;
+  border-radius: 5px;
+}
+
+input[type=range]::-ms-ticks {
+  display: none;
+}
+
+input[type=range]::-ms-tooltip {
+  display: none;
+}
+
+
+/******** Styles for file upload control ************/
+
+input[type=file] {
+  display:inline-block;
+  cursor:pointer;
+  padding: 0.1875rem;
+  background-color: $color-form-element-background;
+  border: solid 2px $color-form-element-border;
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: 1rem;
+  color: $color-body-text;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+}
+
+
+input[type=file].threeQuarterLength {
+  max-width: 18.75rem;
+}
+
+input[type=file].fullLength {
+  max-width: 25rem;
+}
+
+input[type=file].wider {
+  max-width: 37.5rem;
+}
+
+input[type=file].stretch {
+  max-width: 100%;
+}
+
+input[type=file]:disabled {
+  cursor:default;
+  opacity:0.5;
+  color: $color-actionable-disabled;
+}
+
+/* Firefox */
+
+@-moz-document url-prefix() {
+
+  input[type=file] {
+    /*-moz-box-sizing: content-box;*/
+    padding: 8px;
+    background-color: $color-form-element-background;
+    border: solid 2px $color-form-element-border;
+  }
+}
+
+/* Webkit browsers */
+input[type=file]::-webkit-file-upload-button {
+  background-color: $color-actionable;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 2px darken($color-actionable, 15%);
+  color:#FFFFFF;
+  font-weight:700;
+  font-family: $font-body;
+  cursor: pointer;
+  font-size: 0.875rem; /* 14px nominal */
+  text-transform:uppercase;
+  padding:0rem;
+  padding-left:1rem;
+  padding-right:1rem;
+  line-height:30px;
+  height:32px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-border-radius: 5px;
+}
+
+input[type=file]::-webkit-file-upload-button:focus {
+  /*outline:none;*/
+}
+
+input[type=file]::-webkit-file-upload-button:hover {
+  background-color: $color-actionable-hover;
+  border-bottom-color: darken($color-actionable-hover, 15%);;
+}
+
+input[type=file]::-webkit-file-upload-button:active {
+  background-color: $color-actionable-active;
+  border-bottom: none;
+  height: 30px;
+  margin-top: 2px;
+}
+
+input[type=file]:disabled::-webkit-file-upload-button {
+  background-color: $color-actionable-disabled;
+  border-bottom-color: darken($color-actionable-disabled, 10%);
+  /*text-shadow: 0px 1px 1px rgba(124, 124, 124, 1);*/
+  cursor: default;
+  -webkit-box-shadow: none;
+}
+
+/* Internet Explorer */
+input[type=file]::-ms-value {
+  border: none;
+  background: transparent;
+  /*padding: 0.375rem 0.5625rem;*/
+  /*box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75) inset;*/
+  /*border-radius: 6px;*/
+  margin-right: 10px;
+  height:32px;
+  box-sizing:border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;    
+}
+
+input[type=file]::-ms-browse {
+  background-color:$color-actionable;
+  border-top:none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 2px darken($color-actionable, 15%);
+  color:#FFFFFF;
+  font-weight:700;
+  font-family: $font-body;
+  font-size: 0.875rem; /* 14px nominal */
+  text-transform:uppercase;
+  padding:0rem;
+  padding-left:16px;
+  padding-right:16px;
+  line-height:28px;
+  height:30px;
+  vertical-align: bottom;
+
+  border-radius: 5px;
+}
+
+input[type=file]::-ms-browse:hover {
+  cursor: pointer;
+  background-color: $color-actionable-hover;
+  border-bottom-color: darken($color-actionable-hover, 15%);
+}
+
+input[type=file]::-ms-browse:active {
+  background-color: $color-actionable-active;
+  border-bottom: none;
+  margin-top: 2px;
+  height:30px;
+}
+
+input[type=file]:disabled::-ms-browse {
+  background-color: $color-actionable-disabled;
+  border-bottom-color: darken($color-actionable-disabled, 10%);
+  /*text-shadow: 0px 1px 1px rgba(124, 124, 124, 1);*/
+  cursor: default;
+}
+
+
+/******************* SELECT ELEMENT ******************/
+
+select {
+  -moz-appearance:none;
+  background-image: url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat: no-repeat;
+  background-position: top -79px right -160px;
+  cursor:pointer;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  position: relative;
+  padding-right: 2rem;
+  padding-right: 0.375rem \9; /* hack for IE9, since we can't hide the drop-down arrow.  So by including padding, it positions the drop-down arrow over the custom arrow */
+}
+/*
+   Unfortunately, IE10 understands the IE9 hack above, and
+   we only want to apply it to IE 9.
+   This is a hack for IE10 to undo the above IE9 hack.
+*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  select {
+    padding-right: 2rem;
+  }
+}
+
+
+select::-ms-expand {
+    display: none;
+}
+
+/* select options */
+select option {
+    font-weight: 400;
+    color: #404040;
+}
+
+/* select options with no value are treated as placeholders */
+select.placeholder option:not([value]), select.placeholder option[value=''] {
+  opacity: 1;
+  color: $color-form-element-placeholder-text;
+  font-weight: 300;
+}
+
+select.placeholder {
+  color: $color-form-element-placeholder-text;
+  font-weight: 300;
+}
+
+/*************** style placeholder text *******************/
+
+input.placeholder, textarea.placeholder {
+  opacity: 1;
+  color: $color-form-element-placeholder-text;
+  font-weight: 300;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+ opacity: 1;
+ color: $color-form-element-placeholder-text;
+ font-weight:300;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder { /* Firefox 18- */
+ opacity: 1;
+ color: $color-form-element-placeholder-text;
+ font-weight:300;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {  /* Firefox 19+ */
+ opacity: 1;
+ color: $color-form-element-placeholder-text;
+ font-weight:300;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+ opacity: 1;
+ color: $color-form-element-placeholder-text;
+ font-weight:300;
+}
+
+/* select options */
+select option {
+  font-weight: 400;
+  color: $color-form-element-text;
+}
+
+/* Assume the first option of a select tag to serve as the placeholder */
+select.firstItemPlaceholder option:first-child {
+  opacity: 1;
+  color: $color-form-element-placeholder-text;
+  font-weight: 300;
+}
+
+select.firstItemPlaceholder.placeholder {
+  color: $color-form-element-placeholder-text;
+  font-weight: 300;
+}
+
+select.operatorSelector {
+  width: 4rem;
+  overflow: hidden;
+}
+
+/*
+select.firstItemPlaceholder option:not(:first-child) {
+  font-weight: 400;
+  color: #404040;
+}
+*/
+
+input.dollarField {
+  padding-left:1.5rem;
+  background-image:url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat:no-repeat;
+  background-position:left -242px top -197px;
+  max-width:8rem;
+}
+
+input.percentField {
+  padding-right:1.5rem;
+  background-image:url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat:no-repeat;
+  background-position: right -202px top -40px;
+  max-width:5rem;
+}
+
+input.searchField {
+  padding-left:30px;
+  background-image:url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat:no-repeat;
+  background-position: left -201px top -237px;
+}
+
+
+
+input[type=number] {
+  max-width:8rem;
+  width: 100%;
+  padding-right:6px;
+  cursor:default;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  margin: 0;
+  /*padding-right: 6px;*/
+}
+
+
+/*** Custom check box and radio button styles ***/
+
+input[type=radio], input[type=checkbox] {
+  -webkit-appearance: none;
+  /*-moz-appearance:none;*/  /* currently buggy in Firefox.  Degrade to browser default style */
+  appearance:none;
+  display:inline-block;
+  position:relative;
+  margin-top:-4px;
+  width:16px;
+  height:16px;
+
+  /* needed for mobile safari */
+  -webkit-border-radius: 0px;
+  border: none;
+
+  line-height:1.5rem;
+  vertical-align:middle;
+  margin-right:4px;
+  cursor:pointer;
+  padding:8px; /* It is not possible to explicitly hide the native check box style in IE9.
+                  But we can fake it.  IE9 will scale the checkbox to fit inside the space
+                  available -- in our case, 16px X 16px.  However, by setting the padding to
+                  8px, the avilable space is now reduced to 0px X 0px. */
+}
+
+@-moz-document url-prefix() {
+  input[type=radio]:-moz-focusring,
+  input[type=checkbox]:-moz-focusring {
+    border: none;
+  }
+}
+
+h4 input[type=radio],
+h4 input[type=checkbox] {
+  margin-top: -2px;
+}
+
+input[type=radio].alignTop,
+input[type=checkbox].alignTop {
+  vertical-align: top;
+  margin-top: 4px;
+}
+
+::-ms-check {
+  display:none
+}
+
+input[type=radio]:focus, input[type=checkbox]:focus {
+  /*outline:none*/
+}
+
+/*
+    need to specifiy these seprately, or the browsers start getting confused
+*/
+input[type=radio] {
+  background-image:url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat:no-repeat;
+  background-position: -140px -120px;
+}
+
+input[type=checkbox] {
+  background-image:url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat:no-repeat;
+  background-position: -120px -120px;
+}
+
+/* checked states */
+input[type=radio]:checked {
+  background-position: -140px -140px
+}
+
+input[type=checkbox]:checked {
+  background-position: -120px -140px;
+}
+
+/* active states */
+
+input[type=radio]:active {
+  background-position: -140px -160px;
+}
+
+input[type=checkbox]:active,
+.ui-selectee.ui-selecting input[type=checkbox] {
+  background-position: -120px -160px
+}
+
+/* active checked states */
+
+input[type=radio]:checked:active {
+  background-position: -140px -180px
+}
+
+input[type=checkbox]:checked:active,
+.ui-selectee.ui-selecting input[type=checkbox]:checked {
+  background-position: -120px -180px
+}
+
+
+/* disabled states */
+
+input[type=radio]:disabled {
+  cursor:default;
+  opacity:0.3;
+}
+
+input[type=radio]:disabled + label {
+  cursor:default;
+  opacity:0.3;
+}
+
+input[type=radio]:disabled:active {
+  background-position: -140px -120px;
+}
+
+input[type=radio]:disabled:checked:active {
+  background-position: -140px -140px;
+}
+
+input[type=checkbox]:disabled {
+  cursor:default;
+  opacity:0.3;
+}
+
+input[type=checkbox]:disabled + label {
+  cursor:default;
+  opacity:0.3;
+}
+
+input[type=checkbox]:disabled:active {
+  background-position: -120px -120px;
+}
+
+input[type=checkbox]:disabled:checked:active {
+  background-position: -120px --140px;
+}
+
+/* change how chack boxes and radio buttons are displatyed when inside a label */
+
+label input[type=radio],
+label input[type=checkbox] {
+  margin-right: 0;
+}
+
+label.multiLineCheckRadioLabel {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.inputGroup li label.multiLineCheckRadioLabel {
+  padding-right: 0.1875rem;
+  padding-left: 1.4375rem;
+}
+
+.inputGroup li label.multiLineCheckRadioLabel:hover {
+  background-color: $color-table-row-hover;
+}
+
+
+.inputGroup li label.multiLineCheckRadioLabel.fullWidthClickable {
+  display: block;
+  margin-bottom: $quarter-baseline-scale;
+}
+
+label.multiLineCheckRadioLabel input[type=radio],
+label.multiLineCheckRadioLabel input[type=checkbox] {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+}
+
+.inputGroup li label.multiLineCheckRadioLabel input[type=radio],
+.inputGroup li label.multiLineCheckRadioLabel input[type=checkbox] {
+  left: 0.1875rem;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Validation error styles
+ */
+
+
+label.validationError,
+div.validationError,
+span.validationError,
+p.validationError,
+h1.validationError,
+h2.validationError,
+h3.validationError,
+h4.validationError,
+h5.validationError,
+h6.validationError {
+  padding-left:25px;
+/*  background-image:url(<%= image_path "icons/icon-error.png" %>);
+  background-repeat:no-repeat;
+  background-position:0px 2px; */
+  color:#DB1717;
+  position: relative;
+}
+
+label.validationError:before,
+div.validationError:before,
+span.validationError:before,
+p.validationError:before,
+h1.validationError:before,
+h2.validationError:before,
+h3.validationError:before,
+h4.validationError:before,
+h5.validationError:before,
+h6.validationError:before,
+label.validationError:after,
+div.validationError:after,
+span.validationError:after,
+p.validationError:after,
+h1.validationError:after,
+h2.validationError:after,
+h3.validationError:after,
+h4.validationError:after,
+h5.validationError:after,
+h6.validationError:after {
+  font-family: $font-icons;
+  font-size: 32px;
+  line-height: 1;
+  position: absolute;
+  width: 20px;
+  height: 32px;
+  overflow: hidden;
+  display: block;
+  top: -3px;
+  text-indent: -6px;
+  left: 0;
+}
+
+label.validationError:before,
+div.validationError:before,
+span.validationError:before,
+p.validationError:before,
+h1.validationError:before,
+h2.validationError:before,
+h3.validationError:before,
+h4.validationError:before,
+h5.validationError:before,
+h6.validationError:before {
+  color: #FFD200;
+  content: "\e611";
+}
+
+label.validationError:after,
+div.validationError:after,
+span.validationError:after,
+p.validationError:after,
+h1.validationError:after,
+h2.validationError:after,
+h3.validationError:after,
+h4.validationError:after,
+h5.validationError:after,
+h6.validationError:after {
+  color: #000000;
+  content: "\e612";
+}
+
+
+input:not([type]).validationError, input[type=text].validationError, input[type=password].validationError, input[type=email].validationError, input[type=number].validationError, select.validationError, textarea.validationError {
+  /*border:solid 1px #DB1717;*/
+  /*color:#DB1717;*/
+  background-color:#FFC8BD;
+  border: solid 2px #DB1717;
+/*    -webkit-box-shadow: 0px 1px 1px 0px rgba(64, 15, 5, 0.75) inset;
+    -moz-box-shadow: 0px 1px 1px 0px rgba(64, 15, 5, 0.75) inset;
+    box-shadow: 0px 1px 1px 0px rgba(64, 15, 5, 0.75) inset;
+    */
+  }
+
+  html.ie input:not([type]).validationError, html.ie input[type=text].validationError, html.ie input[type=password].validationError, html.ie input[type=email].validationError, html.ie input[type=number].validationError, html.ie select.validationError, html.ie textarea.validationError {
+    /*box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75) inset;*/
+  }
+
+  input.validationError.placeholder, textarea.placeholder.validationError {
+    opacity: 1;
+    color: #EE6863;
+    font-weight: 300;
+  }
+
+input.validationError::-webkit-input-placeholder, textarea.validationError::-webkit-input-placeholder {
+ opacity: 1;
+ color: #EE6863;
+ font-weight:300;
+}
+
+input.validationError:-moz-placeholder, textarea.validationError:-moz-placeholder { /* Firefox 18- */
+ opacity: 1;
+ color: #EE6863;
+ font-weight:300;
+}
+
+input.validationError::-moz-placeholder, textarea.validationError::-moz-placeholder {  /* Firefox 19+ */
+ opacity: 1;
+ color: #EE6863;
+ font-weight:300;
+}
+
+input.validationError:-ms-input-placeholder, textarea.validationError:-ms-input-placeholder {
+ opacity: 1;
+ color: #EE6863;
+ font-weight:300;
+}
+
+select.validationError.placeholder {
+  opacity: 1;
+  color: #EE6863;
+  font-weight: 300;
+}
+
+select.validationError option:not([value]), select.validationError option[value=''] {
+  opacity: 1;
+  color: #EE6863;
+  font-weight: 300;
+}
+
+.validationError strong {
+  color: $color-error-text;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * jQuery UI Datepicker Widget
+ *
+ * Most of the styles are defined in ks-jquery.css --  this is
+ * the modification to the text field to add the calendar icon.
+ *
+ */
+
+
+ .datePicker {
+  margin:0px;
+  box-sizing:border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background-image: url(<%= image_path "forms/form-element-sprite.svg" %>);
+  background-repeat: no-repeat;
+  background-position: top -1px right -239px;
+  cursor:pointer;
+  z-index:1000;
+
+}
+
+.datePickerVeil {
+  background-color:#000000;
+  opacity:0.65;
+  z-index:0.9;
+  position:fixed;
+  top:0px;
+  left:0px;
+  display:block;
+  display:none;
+}
+
+.datePicker::-ms-clear {
+  display:none;
+}
+
+
+
+

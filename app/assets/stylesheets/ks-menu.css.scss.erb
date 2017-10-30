@@ -1,0 +1,288 @@
+@import "_variables.scss";
+
+ul.ksMenu {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+ul.ksMenu ul {
+  display: none;
+  padding: 0;
+  background-color: $color-header-background;
+  border: 1px solid darken($color-header-background, 5%);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: absolute;
+  z-index: $z-index-nav;
+  margin-bottom: 0;
+}
+
+ul.ksMenu ul ul {
+  top: 2px;
+  left: calc(100% - 4px);
+  z-index: calc($z-index-nav + 10);
+}
+
+/* set z-index for a potential third level */
+ul.ksMenu ul ul ul {
+  z-index: calc($z-index-nav + 20);
+}
+
+ul.ksMenu li {
+  position: relative;
+  text-align: left;
+}
+
+/* align top level items horizontally */
+ul.ksMenu > li {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 20px;
+}
+
+ul.ksMenu > li:last-child {
+  padding-right: 0px;
+}
+
+/* child elements are aligned vertically */
+ul.ksMenu > li ul li {
+  display: block;
+  border-bottom: solid 1px darken($color-header-background, 5%);
+}
+
+ul.ksMenu > li ul li:last-child {
+  border-bottom: none;
+}
+
+ul.ksMenu a {
+  color: $color-main-nav-links;
+  white-space: nowrap;
+  display: block;
+
+  &:visited {
+    color: $color-main-nav-links;
+  }
+
+  &:hover {
+    color: $color-main-nav-links-hover;
+  }
+
+  &:active {
+    color: $color-main-nav-links-active;
+  }
+
+}
+
+ul.ksMenu a img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -3px;
+  margin-right: 4px;
+}
+
+ul.ksMenu > li > ul a {
+  font-size: 0.875rem;
+  margin: 0px 0px;
+  padding: 5px 30px 5px 12px;
+}
+
+ul.ksMenu > li > ul {
+  top: calc(100% + 4px);
+}
+
+ul.ksMenu > li > ul:before {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-bottom: solid 6px darken($color-header-background, 5%);
+  border-left: solid 7px transparent;
+  border-right: solid 7px transparent;
+  top: -6px;
+  left: 4px;
+}
+
+ul.ksMenu ul.showSubMenu {
+  display: block;
+}
+
+/* class used to measure placment on screen to deal with off-screen rendering */
+ul.ksMenu ul.showSubMenuInvisible {
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+}
+
+ul.ksMenu > li li {
+  background-color: $color-header-background;
+}
+
+ul.ksMenu > li li:hover {
+  background-color: $color-page-wrap-background;
+}
+
+ul.ksMenu > li li.hasChildren:after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-left: solid 6px $color-main-nav-links;
+  border-top: solid 5px transparent;
+  border-bottom: solid 5px transparent;
+  right: 8px;
+  top: 12px;
+  pointer-events: none;
+}
+
+
+/* modifiers for right-aligned menu */
+ul.ksMenu > li > ul.alignRight {
+  left: auto;
+  right: 0px;
+}
+
+ul.ksMenu > li > ul.alignRight:before {
+  left: auto;
+  right: 4px;
+}
+
+ul.ksMenu ul.alignRight > li {
+  text-align: right;
+}
+
+ul.ksMenu ul ul.alignRight > li {
+  text-align: left;
+}
+
+ul.ksMenu ul.alignRight > li.hasChildren > ul,
+ul.ksMenu ul ul.alignRight {
+  left: auto;
+  right: calc(100% - 4px);
+}
+
+ul.ksMenu ul.alignRight > li.hasChildren:after {
+  border-left: none;
+  border-right: solid 6px $color-main-nav-links;
+  border-top: solid 5px transparent;
+  border-bottom: solid 5px transparent;
+  right: auto;
+  left: 8px;
+  top: 12px;
+  pointer-events: none;
+}
+
+ul.ksMenu > li > ul.alignRight > li > a {
+  margin: 0px 0px;
+  padding: 5px 12px 5px 30px;
+}
+
+/* add user icon to user management menu */
+.userMgmt ul.ksMenu > li:first-child > a {
+  padding-left: 22px;
+  background-image: url(<%= image_path "icons/icon-user-management-silhouette.png" %>);
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.userMgmt ul.ksMenu > li > a {
+  font-size: 0.875rem;
+}
+
+/************* Fixed Nav *****************/
+
+.ksFixedNav {
+  position: fixed;
+  top: -36px;
+  left: 0px;
+  background-color: $color-header-background;
+  width: 100%;
+  height: 36px;
+  white-space: nowrap;
+  overflow: visible;
+  z-index: 1000;
+
+  -webkit-transition: top 0.1s;
+  transition: top 0.1s;
+}
+
+.ksFixedNav.dockedToWindowTop {
+  top: 0px;
+}
+
+.ksFixedNav > .logo {
+  float: left;
+  margin: 6px 12px 0 12px;
+}
+
+div.header .ksFixedNav div.nav .mainMenu {
+  float: left;
+  padding-top: 0;
+  white-space: nowrap;
+}
+
+div.header .ksFixedNav div.nav {
+  margin-left: 0px;
+}
+
+.ksFixedNav .mainMenu {
+  float:left;
+  white-space: nowrap;
+}
+
+.ksFixedNav .userMgmt {
+  margin-top: 6px;
+  margin-right: 10px;
+  float:right;
+  text-align: right;
+}
+
+.ksFixedNav .mainMenu > *,
+.ksFixedNav .userMgmt > * {
+  vertical-align: top;
+}
+
+.ksFixedNav .mainMenu ul.ksMenu {
+  margin-top: 10px;
+}
+
+.ksFixedNav .mainMenu ul.ksMenu > li {
+  border-right: solid 1px $color-page-wrap-background;
+  padding-right: 6px;
+  margin-right: 6px;
+}
+
+.ksFixedNav .mainMenu ul.ksMenu > li:last-child {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.ksFixedNav .mainMenu ul.ksMenu > li:last-child:after {
+  content: none;
+  margin: 0;
+}
+
+
+.ksFixedNav .mainMenu ul.ksMenu > li > a {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+
+
+
+@media
+  (min--moz-device-pixel-ratio: 2.0),
+  (-o-min-device-pixel-ratio: 4.0/2),
+  (-webkit-min-device-pixel-ratio: 2.0),
+  (min-device-pixel-ratio: 2.0),
+  (min-resolution: 2.0dppx) {
+
+  .userMgmt ul.ksMenu > li:first-child > a {
+    background-image: url(<%= image_path "icons/icon-user-management-silhouette@2x.png" %>);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+  }
+
+}

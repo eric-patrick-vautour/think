@@ -1,0 +1,1718 @@
+/* CSS Document */
+@import "../_variables.scss";
+
+/*
+  Inclusion of this style sheet will apply button styles
+  to all <button> elements, and button-type input elements
+  (e.g.: submit, button, reset").
+
+  You may also buttonize any element by applying the
+  ".button" class.
+*/
+
+
+/* Container for buttons aligned horizontaly */
+
+.buttonRow {
+  width:100%;
+  max-width:100%;
+  text-align:center;
+}
+
+
+/* <ul> for buttons in a list */
+ul.buttonStack li {
+  margin-bottom: 0.375rem;
+}
+
+/*
+  Class to size text line height to be as tall as buttons.
+  Use this when the parent container's height changes when
+  the button is clicked.
+ */
+.buttonHeight {
+  line-height: 36px;
+}
+
+/******************* GENERAL BUTTON STYLE *********************/
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button {
+  font-family: $font-body;
+  font-weight: 700;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: #FFFFFF;
+  font-size: 0.875rem; /* 14px nominal */
+  text-transform:uppercase;
+  padding:0rem;
+  padding-left:1rem;
+  padding-right:1rem;
+  line-height:1.875rem;
+  height:32px;
+
+  background-color: $color-actionable;
+  vertical-align:middle;
+  text-decoration:none;
+
+  border-left:none;
+  border-right:none;
+  border-top:none;
+  border-bottom: solid 2px darken($color-actionable, 15%);
+
+  display:inline-block;
+  cursor: pointer;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  transition: color 0.2s;
+
+
+}
+
+button:hover,
+.button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+a:hover button,
+a:hover .button {
+  background-color: $color-actionable-hover;
+  border-bottom: solid 2px darken($color-actionable-hover, 15%);
+}
+
+.button,
+.button:hover,
+input[type="button"],
+input[type="button"]:hover,
+input[type="reset"],
+input[type="reset"]:hover,
+input[type="submit"],
+input[type="submit"]:hover,
+.button:active,
+.button:visited {
+    color:#ffffff;
+    text-decoration:none;
+}
+
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active,
+.button:active, .buttonActive,
+a:active button, a:active .button,
+a:hover button:active,
+a:hover .button:active {
+  background-color: $color-actionable-active;
+  /*border:solid 1px $color-actionable-active;*/
+  border-bottom: none;
+  margin-top:2px;
+  height:30px;
+
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled,
+input[type="submit"]:disabled,
+.button:disabled,
+.button.disabled,
+.button.disabled:hover,
+button.destructiveAction:disabled,
+button.destructiveAction:disabled:hover,
+input[type="button"].destructiveAction:disabled:hover,
+input[type="reset"].destructiveAction:disabled:hover,
+input[type="submit"].destructiveAction:disabled:hover,
+.button.destructiveAction:disabled:hover,
+button.destructiveAction:disabled:active,
+input[type="button"].destructiveAction:disabled:active,
+input[type="reset"].destructiveAction:disabled:active,
+input[type="submit"].destructiveAction:disabled:active,
+.button.destructiveAction:disabled:active,
+.button.destructiveAction.disabled,
+.button.destructiveAction.disabled:visited,
+.button.destructiveAction.disabled:hover
+{
+  background-color: $color-actionable-disabled;
+  /*border-bottom:solid 2px darken($color-actionable-disabled, 10%);*/
+  border-bottom: none;
+  margin-top:2px;
+  height:30px;
+  cursor: default;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+a.button.disabled,
+a.button.disabled:visited,
+a.button.disabled:hover,
+a.button.disabled:active {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* secondary action buttons */
+
+button.secondaryAction,
+input[type="button"].secondaryAction,
+input[type="reset"].secondaryAction,
+input[type="submit"].secondaryAction,
+.button.secondaryAction {
+
+  color: $color-actionable;
+  background-color: #FAFAFA;
+  line-height: 26px;
+  height: 28px;
+
+  border-left: solid 1px $color-actionable;
+  border-right: solid 1px $color-actionable;
+  border-top: solid 1px $color-actionable;
+  border-bottom: solid 2px darken($color-actionable, 5%);
+
+  -webkit-transition: color 0s;
+  -moz-transition: color 0s;
+  transition: color 0s;
+
+  vertical-align: middle;
+
+
+
+  &:visited {
+
+    color: $color-actionable;
+    border-color: $color-actionable;
+    border-bottom-color: darken($color-actionable, 5%);
+  }
+
+  &:hover {
+    background-color: #FFFFFF;
+    color: $color-actionable-hover;
+    border-color: $color-actionable-hover;
+    border-bottom-color: darken($color-actionable-hover, 8%);
+  }
+
+  &:active {
+    color: $color-actionable-active;
+    border-color: $color-actionable-active;
+    margin-top: 1px;
+    height: 27px;
+    border-bottom-width:1px;
+  }
+
+  &:disabled,
+  &.disabled,
+  &.destructiveAction:disabled,
+  &.destructiveAction.disabled {
+    background-color: #FFFFFF;
+    color: $color-actionable-disabled;
+    border-color: $color-actionable-disabled;
+    margin-top: 1px;
+    height: 27px;
+    border-bottom: solid 1px $color-actionable-disabled;
+  }
+
+  &.destructiveAction,
+  &.destructiveAction:visited {
+    background-color: #FAFAFA;
+    color: $color-actionable-destructive;
+    border-color: $color-actionable-destructive;
+    border-bottom-color: darken($color-actionable-destructive, 5%);
+  }
+
+  &.destructiveAction:hover {
+    background-color: #FFFFFF;
+    color: $color-actionable-destructive-hover;
+    border-color: $color-actionable-destructive-hover;
+    border-bottom-color: darken($color-actionable-destructive-hover, 12%);
+  }
+
+  &.destructiveAction:active {
+    background-color: #FFFFFF;
+    color: $color-actionable-destructive-active;
+    border-color: $color-actionable-destructive-active;
+    margin-top: 1px;
+    height: 27px;
+    border-bottom-width:1px;
+  }
+
+}
+
+a.button.secondaryAction.disabled,
+a.button.secondaryAction.disabled:visited,
+a.button.secondaryAction.disabled:hover,
+a.button.secondaryAction.disabled:active {
+  color: $color-actionable-disabled;
+  border-color: $color-actionable-disabled;
+  border-bottom: solid 1px $color-actionable-disabled;
+}
+
+/*
+  deal with buttonized <a> tags nested in jQuery widgets
+*/
+
+.ui-widget-content a.button,
+.ui-widget-content a.button:visited,
+.ui-widget-content a.button:active,
+.ui-widget-content a.button:hover {
+  color: #FFFFFF;
+}
+
+/* Remove button padding in FireFox for consistent sizing */
+::-moz-focus-inner
+{
+  border: 0px;
+  padding: 0px;
+}
+
+/*
+  Toggled Button
+
+  add the class "toggled" to
+  a button to give it this state.
+  Visually it will appear "pressed down"
+
+*/
+
+button.toggled,
+input[type="button"].toggled,
+input[type="reset"].toggled,
+input[type="submit"].toggled,
+.button.toggled {
+  background-color: $color-actionable-hover;
+  border-bottom:none;
+  margin-top:2px;
+  height:30px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+button.toggled:hover,
+input[type="button"].toggled:hover,
+input[type="reset"].toggled:hover,
+input[type="submit"].toggled:hover,
+.button.toggled:hover {
+  background-color: $color-actionable-hover;
+  border-bottom:none;
+  margin-top:2px;
+  height:30px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+button.toggled:active,
+input[type="button"].toggled:active,
+input[type="reset"].toggled:active,
+input[type="submit"].toggled:active,
+.button.toggled:active {
+  background-color: $color-actionable-active;
+  border-bottom:none;
+  margin-top:2px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+button.toggled:visited,
+input[type="button"].toggled:visited,
+input[type="reset"].toggled:visited,
+input[type="submit"].toggled:visited,
+.button.toggled:visited {
+  background-color: $color-actionable-hover;
+  border-bottom:none;
+  margin-top:2px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+button.destructiveAction.toggled,
+input[type="button"].destructiveAction.toggled,
+input[type="reset"].destructiveAction.toggled,
+input[type="submit"].destructiveAction.toggled,
+.button.destructiveAction.toggled {
+  background-color: $color-actionable-destructive-hover;
+}
+
+button.toggled.secondaryAction,
+input[type="button"].secondaryAction.toggled,
+input[type="reset"].secondaryAction.toggled,
+input[type="submit"].secondaryAction.toggled,
+.button.toggled.secondaryAction,
+.button.toggled.secondaryAction:visited {
+  background-color: #FFFFFF;
+  color: $color-actionable-hover;
+  border-color: $color-actionable-hover;
+  border-bottom: solid 1px $color-actionable-hover;
+  height: 27px;
+  margin-top: 1px;
+  &:active {
+    border-color: $color-actionable-active;
+    color: $color-actionable-active;
+  }
+}
+
+button.toggled.secondaryAction.destructiveAction,
+input[type="button"].secondaryAction.destructiveAction.toggled,
+input[type="reset"].secondaryAction.destructiveAction.toggled,
+input[type="submit"].secondaryAction.destructiveAction.toggled,
+.button.toggled.secondaryAction.destructiveAction,
+.button.toggled.secondaryAction.destructiveAction:visited {
+  color: $color-actionable-destructive-hover;
+  border-color: $color-actionable-destructive-hover;
+  border-bottom: solid 1px $color-actionable-destructive-hover;
+  &:active {
+    border-color: $color-actionable-destructive-active;
+    color: $color-actionable-destructive-active;
+  }
+}
+
+/*
+  Destructive Action
+
+  Add the class "destructiveAction" to any button
+  that represents an irreversible course of
+  action.  (e.g.: Delete a record, trash a creative, etc.)
+
+  Typically these buttions would be accompanied by
+  some sort of "Are you sure?" prompt on click.
+
+*/
+
+button.destructiveAction,
+input[type="button"].destructiveAction,
+input[type="reset"].destructiveAction,
+input[type="submit"].destructiveAction,
+.button.destructiveAction,
+.button.destructiveAction:visited {
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: $color-actionable-destructive;
+    border-bottom-color: darken($color-actionable-destructive, 20%);
+}
+
+button.destructiveAction:hover,
+input[type="button"].destructiveAction:hover,
+input[type="reset"].destructiveAction:hover,
+input[type="submit"].destructiveAction:hover,
+.button.destructiveAction:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: $color-actionable-destructive-hover;
+    border-bottom-color: darken($color-actionable-destructive-hover, 20%);
+}
+
+button.destructiveAction:active,
+input[type="button"].destructiveAction:active,
+input[type="reset"].destructiveAction:active,
+input[type="submit"].destructiveAction:active,
+.button.destructiveAction:active {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: $color-actionable-destructive-active;
+}
+
+
+/*  Activity */
+
+button.waitIcon,
+button.iconButton.waitIcon,
+input[type="button"].waitIcon,
+input[type="reset"].waitIcon,
+input[type="submit"].waitIcon,
+input[type="button"].iconButton.waitIcon,
+input[type="reset"].iconButton.waitIcon,
+input[type="submit"].iconButton.waitIcon,
+.button.iconButton.waitIcon,
+.button.waitIcon:hover,
+.button.iconButton.waitIcon:active,
+.button.iconButton.waitIcon:visited,
+.button.iconButton.waitIcon,
+.button.iconButton.waitIcon:hover,
+.button.iconButton.waitIcon:active,
+.button.iconButton.waitIcon:visited {
+  background-image: url(<%= image_path "ui/wait-spinner-button.gif" %>);
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 0px;
+  color: rgba(255,255,255,0);
+  background-color: $color-actionable-active;
+  border-bottom: none;
+  margin-top:2px;
+  height:30px;
+  cursor: default;
+}
+
+button.waitIcon:not(.iconButton),
+button.iconButton.waitIcon:not(.iconButton),
+input[type="button"].waitIcon:not(.iconButton),
+input[type="reset"].waitIcon:not(.iconButton),
+input[type="submit"].waitIcon:not(.iconButton),
+input[type="button"].iconButton.waitIcon:not(.iconButton),
+input[type="reset"].iconButton.waitIcon:not(.iconButton),
+input[type="submit"].iconButton.waitIcon:not(.iconButton) {
+  width: auto;
+}
+
+
+button.destructiveAction.waitIcon,
+input[type="button"].destructiveAction.waitIcon,
+input[type="reset"].destructiveAction.waitIcon,
+input[type="submit"].destructiveAction.waitIcon,
+.button.destructiveAction.waitIcon,
+.button.destructiveAction.waitIcon:hover,
+.button.destructiveAction.waitIcon:active,
+.button.destructiveAction.waitIcon:visited {
+  color: rgba(255,255,255,0);
+  background-image: url(<%= image_path "ui/wait-spinner-button-destructive.gif" %>);
+  background-color: $color-actionable-destructive-active;
+}
+
+button.toggled.waitIcon,
+input[type="button"].toggled.waitIcon,
+input[type="reset"].toggled.waitIcon,
+input[type="submit"].toggled.waitIcon,
+.button.toggled.waitIcon,
+.button.toggled.waitIcon:hover,
+.button.toggled.waitIcon:active,
+.button.toggled.waitIcon:visited {
+  background-image: url(<%= image_path "ui/wait-spinner-button-toggled.gif" %>);
+  background-color: $color-actionable-hover;
+}
+
+button.toggled.waitIcon:hover {
+  color: rgba(255,255,255,0);
+}
+
+
+button.waitIcon:disabled,
+input[type="button"].waitIcon:disabled,
+input[type="reset"].waitIcon:disabled,
+input[type="submit"].waitIcon:disabled,
+.button.waitIcon.disabled,
+.button.waitIcon.disabled:hover,
+.button.waitIcon.disabled:active,
+.button.waitIcon.disabled:visited,
+button.destructiveAction.waitIcon:disabled,
+input[type="button"].destructiveAction.waitIcon:disabled,
+input[type="reset"].destructiveAction.waitIcon:disabled,
+input[type="submit"].destructiveAction.waitIcon:disabled,
+.button.destructiveAction.waitIcon:disabled,
+.button.destructiveAction.waitIcon.disabled,
+.button.destructiveAction.waitIcon.disabled:hover,
+.button.destructiveAction.waitIcon.disabled:active,
+.button.destructiveAction.waitIcon.disabled:visited {
+  background-image: url(<%= image_path "ui/wait-spinner-button-disabled.gif" %>);
+  background-color: $color-actionable-disabled;
+}
+
+/*
+  Size modifier to stretch buttons to the full width of its container.
+  Useful for stacking buttons in a column.
+*/
+
+button.stretch,
+input[type="button"].stretch,
+input[type="reset"].stretch,
+input[type="submit"].stretch,
+.button.stretch {
+  width: 100%;
+}
+
+/*
+  Icon Buttons
+
+  Add the class .iconButton to a button or buttonized element,
+  followed by the class for the specific button icon.
+
+  Button icons are spaced on a 32x32px grid, but the buttons
+  are 32x30px  Remember to offset by 1 pixel up for each icon.
+
+  Please name these styles fopr the action it represenets,
+  not for what the icon looks like. For example, the "Pencil"
+  icon is used to edit items.  Therefore its style is named
+  "iconEdit," not "iconPencil."  This separates the HTML markup
+  from the display and it allows us to change the look of the
+  icon without changing the name of the style.  It also means
+  we always use the same icon to represent a particular action.
+
+*/
+
+button.iconButton,
+.button.iconButton,
+input[type="button"].iconButton,
+input[type="reset"].iconButton,
+input[type="submit"].iconButton {
+  padding:0rem;
+  width:32px;
+  line-height:30px; /* using pixels to keep explicit sizing with sprite */
+  vertical-align:middle;
+  position: relative;
+  font-family: monospace !important;
+  font-size: 24px;
+  
+  /* hide any text */
+  overflow:hidden;
+  text-indent: 40px;
+
+  /* add icon sprite */
+/*  background-image:url(<%= image_path "icons/icon-buttons-sprite.png" %>);
+  background-repeat: no-repeat;
+*/
+
+}
+
+button.iconButton:before,
+.button.iconButton:before,
+input[type="button"].iconButton:before,
+input[type="reset"].iconButton:before,
+input[type="submit"].iconButton:before {
+  font-family: $font-icons;
+  text-indent: 0px;
+  display: block;
+  float: left;
+  margin-top: -1px;
+  margin-left: 0px;
+
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 32px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* secondary action icon buttons */
+
+button.iconButton.secondaryAction,
+.button.iconButton.secondaryAction,
+input[type="button"].iconButton.secondaryAction,
+input[type="reset"].iconButton.secondaryAction,
+input[type="submit"].iconButton.secondaryAction {
+  width:28px;
+}
+
+button.iconButton.secondaryAction:before,
+.button.iconButton.secondaryAction:before,
+input[type="button"].iconButton.secondaryAction:before,
+input[type="reset"].iconButton.secondaryAction:before,
+input[type="submit"].iconButton.secondaryAction:before {
+  margin-top: -3px;
+  margin-left: -3px;
+}
+
+/*
+  Specific icons defined here:;
+*/
+
+.iconButton.iconEdit:before {
+  content: "\e62b";
+}
+
+.iconButton.iconReports:before {
+  content: "\e62c";
+}
+
+.iconButton.iconPause:before {
+  content: "\e62d";
+}
+
+.iconButton.iconResume:before {
+  content: "\e62e";
+}
+
+.iconButton.iconShow:before {
+  content: "\e62f";
+}
+
+.iconButton.iconAdd:before {
+  content: "\e630";
+}
+
+.iconButton.iconRemove:before {
+  content: "\e632";
+}
+
+.iconButton.iconRecalculate:before {
+  content: "\e634";
+}
+
+.iconButton.iconConfigure:before {
+  content: "\e635";
+}
+
+.iconButton.iconDownload:before {
+  content: "\e636";
+}
+
+.iconButton.iconClose:before {
+  content: "\e60e";
+  font-size: 16px;
+  margin-top: 7px;
+  margin-left: 8px;
+}
+
+.iconButton.iconClose.secondaryAction:before {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.iconButton.iconReset:before {
+  content: "\e637";
+}
+
+.iconButton.iconDelete:before {
+  content: "\e638";
+}
+.iconButton.iconDelete.secondaryAction:before {
+  margin-top: -4px;
+}
+
+.iconButton.iconInfo:before {
+  content: "\e63a";
+}
+
+.iconButton.iconPhoto:before {
+  content: "\e63b";
+}
+
+.iconButton.iconCard:before {
+  content: "\e63c";
+}
+
+.iconButton.iconDuplicate:before {
+  content: "\e63d";
+}
+
+.iconButton.iconMore:before {
+  content: "\e63e";
+}
+
+.iconButton.iconSelectNone:before {
+  content: "\e63f";
+}
+
+.iconButton.iconSelectAll:before {
+  content: "\e640";
+}
+
+.iconButton.iconPrevious:before {
+  content: "\e605";
+  font-size: 16px;
+  margin-top: 7px;
+  margin-left: 8px;
+}
+.iconButton.iconPrevious.secondaryAction:before {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.iconButton.iconNext:before {
+  content: "\e606";
+  font-size: 16px;
+  margin-top: 7px;
+  margin-left: 8px;
+}
+.iconButton.iconNext.secondaryAction:before {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.iconButton.iconFatterRows:before {
+  content: "\e641";
+}
+
+.iconButton.iconThinnerRows:before {
+  content: "\e642";
+}
+
+.iconButton.iconPrint:before {
+  content: "\e643";
+}
+
+.iconButton.iconSAM:before {
+  content: "\e644";
+}
+
+.iconButton.iconCheck:before {
+  font-size: 24px;
+  content: "\e60d";
+  margin-top: 3px;
+  margin-left: 4px;
+}
+.iconButton.iconCheck.secondaryAction:before {
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+.iconButton.iconCrop:before {
+  content: "\e64f";
+  margin-top: 0px;
+  margin-left: 1px;
+}
+
+.iconButton.iconCrop.secondaryAction:before {
+  margin-top: -2px;
+  margin-left: -2px;
+}
+
+.iconButton.iconFav:before {
+  content: "\e625";
+}
+.iconButton.iconFav.secondaryAction:before {
+  margin-top: -4px;
+}
+
+.iconButton.iconRewind:before {
+  content: "\e655";
+}
+.iconButton.iconRewind.secondaryAction:before {
+  margin-top: -3px;
+}
+
+.iconButton.iconSelection:before {
+  content: "\e656";
+}
+.iconButton.iconSelection.secondaryAction:before {
+  margin-top: -3px;
+}
+
+.iconButton.iconHandPointer:before {
+  content: "\e602";
+  font-size: 20px;
+  margin-top: 5px;
+  margin-left: 6px;
+}
+.iconButton.iconHandPointer.secondaryAction:before {
+  margin-top: 2px;
+  margin-left: 3px;
+}
+
+
+
+/*
+  Large Icon Buttons
+
+  Similar to above, but sized to 48px X 48px.
+*/
+
+button.largeIconButton,
+.button.largeIconButton,
+input[type="button"].largeIconButton,
+input[type="reset"].largeIconButton,
+input[type="submit"].largeIconButton {
+  width:48px;
+  height:48px; /* using pixels to keep explicit sizing with sprite */
+  padding: 0px;
+  vertical-align:middle;
+
+  /* hide any text */
+  overflow:hidden;
+  text-indent: 50px;
+  font-size: 32px;
+  line-height: 32px;
+}
+
+button.largeIconButton:before,
+.button.largeIconButton:before,
+input[type="button"].largeIconButton:before,
+input[type="reset"].largeIconButton:before,
+input[type="submit"].largeIconButton:before {
+  font-family: $font-icons;
+  font-weight: normal;
+  text-indent: 0px;
+  display: block;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  top: 8px;
+  left: 8px;
+  margin-bottom: 10px;
+}
+
+button.largeIconButton:active,
+.button.largeIconButton:active,
+input[type="button"].largeIconButton:active,
+input[type="reset"].largeIconButton:active,
+input[type="submit"].largeIconButton:active,
+a:active button.largeIconButton,
+a:active .button.largeIconButton,
+a:active input[type="button"].largeIconButton,
+a:active input[type="reset"].largeIconButton,
+a:active input[type="submit"].largeIconButton,
+a:hover button.largeIconButton:active,
+a:hover .button.largeIconButton:active {
+  height:46px;
+}
+
+
+.largeIconButton.iconAudiences:before {
+  content: "\e64d";
+}
+
+.largeIconButton.iconCompass:before {
+  content: "\e64b";
+}
+
+.largeIconButton.iconReports:before {
+  content: "\e64c";
+}
+
+.largeIconButton.iconSAM:before {
+  content: "\e64a";
+}
+
+
+/*
+  Support for high resolution displays
+*/
+@media
+  (min--moz-device-pixel-ratio: 2.0),
+  (-o-min-device-pixel-ratio: 4.0/2),
+  (-webkit-min-device-pixel-ratio: 2.0),
+  (min-device-pixel-ratio: 2.0),
+  (min-resolution: 2.0dppx) {
+
+    .iconButton.iconAdd:before {
+      content: "\e631";
+    }
+
+    .iconButton.iconRemove:before {
+      content: "\e633";
+    }
+    .iconButton.iconDelete:before {
+      content: "\e639";
+    }
+
+    button.waitIcon,
+    button.iconButton.waitIcon,
+    input[type="button"].waitIcon,
+    input[type="reset"].waitIcon,
+    input[type="submit"].waitIcon,
+    input[type="button"].iconButton.waitIcon,
+    input[type="reset"].iconButton.waitIcon,
+    input[type="submit"].iconButton.waitIcon,
+    .button.iconButton.waitIcon,
+    .button.waitIcon:hover,
+    .button.iconButton.waitIcon:active,
+    .button.iconButton.waitIcon:visited,
+    .button.iconButton.waitIcon,
+    .button.iconButton.waitIcon:hover,
+    .button.iconButton.waitIcon:active,
+    .button.iconButton.waitIcon:visited {
+      background-image: url(<%= image_path "ui/wait-spinner-button@2x.gif" %>);    
+      background-repeat: no-repeat;
+      background-size:24px 24px;
+      background-position: center;
+    }
+
+    button.destructiveAction.waitIcon,
+    input[type="button"].destructiveAction.waitIcon,
+    input[type="reset"].destructiveAction.waitIcon,
+    input[type="submit"].destructiveAction.waitIcon,
+    .button.destructiveAction.waitIcon,
+    .button.destructiveAction.waitIcon:hover,
+    .button.destructiveAction.waitIcon:active,
+    .button.destructiveAction.waitIcon:visited {
+      background-image: url(<%= image_path "ui/wait-spinner-button-destructive@2x.gif" %>);
+    }
+
+    button.toggled.waitIcon,
+    input[type="button"].toggled.waitIcon,
+    input[type="reset"].toggled.waitIcon,
+    input[type="submit"].toggled.waitIcon,
+    .button.toggled.waitIcon,
+    .button.toggled.waitIcon:hover,
+    .button.toggled.waitIcon:active,
+    .button.toggled.waitIcon:visited {
+      background-image: url(<%= image_path "ui/wait-spinner-button-toggled@2x.gif" %>);
+    }
+
+    button.waitIcon:disabled,
+    input[type="button"].waitIcon:disabled,
+    input[type="reset"].waitIcon:disabled,
+    input[type="submit"].waitIcon:disabled,
+    .button.waitIcon:disabled,
+    .button.waitIcon.disabled:hover,
+    .button.waitIcon.disabled:active,
+    .button.waitIcon.disabled:visited {
+      background-image: url(<%= image_path "ui/wait-spinner-button-disabled@2x.gif" %>);
+    }    
+
+}
+
+
+
+
+/*
+ * Old icon buttons - ActionIcons, Based off of jQuery UI CSS Framework
+ *
+ * Included for legacy purposes.  To be removed once the KSP is fully under the
+ * new templates.
+ */
+
+.action-icon {
+    display: block;
+    overflow: hidden;
+    float: left;
+    text-indent: -99999px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-image: url(<%= image_path "action_icons/action_icons_white_custom.png" %>);
+    border: 1px solid #9b9d9f;
+    background-color: #86be58;
+    margin: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px
+}
+
+.inline-action-icon {
+    display: inline-block;
+    overflow: visible;
+    text-indent: -99999px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-image: url(<%= image_path "action_icons/action_icons_white_custom.png" %>);
+    border: 1px solid #9b9d9f;
+    background-color: #86be58;
+    margin: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px
+}
+
+.action-icon-carat-1-n {
+    background-position: 0 0
+}
+
+.action-icon-carat-1-ne {
+    background-position: -16px 0
+}
+
+.action-icon-carat-1-e {
+    background-position: -32px 0
+}
+
+.action-icon-carat-1-se {
+    background-position: -48px 0
+}
+
+.action-icon-carat-1-s {
+    background-position: -64px 0
+}
+
+.action-icon-carat-1-sw {
+    background-position: -80px 0
+}
+
+.action-icon-carat-1-w {
+    background-position: -96px 0
+}
+
+.action-icon-carat-1-nw {
+    background-position: -112px 0
+}
+
+.action-icon-carat-2-n-s {
+    background-position: -128px 0
+}
+
+.action-icon-carat-2-e-w {
+    background-position: -144px 0
+}
+
+.action-icon-triangle-1-n {
+    background-position: 0 -16px
+}
+
+.action-icon-triangle-1-ne {
+    background-position: -16px -16px
+}
+
+.action-icon-triangle-1-e {
+    background-position: -32px -16px
+}
+
+.action-icon-triangle-1-se {
+    background-position: -48px -16px
+}
+
+.action-icon-triangle-1-s {
+    background-position: -64px -16px
+}
+
+.action-icon-triangle-1-sw {
+    background-position: -80px -16px
+}
+
+.action-icon-triangle-1-w {
+    background-position: -96px -16px
+}
+
+.action-icon-triangle-1-nw {
+    background-position: -112px -16px
+}
+
+.action-icon-triangle-2-n-s {
+    background-position: -128px -16px
+}
+
+.action-icon-triangle-2-e-w {
+    background-position: -144px -16px
+}
+
+.action-icon-arrow-1-n {
+    background-position: 0 -32px
+}
+
+.action-icon-arrow-1-ne {
+    background-position: -16px -32px
+}
+
+.action-icon-arrow-1-e {
+    background-position: -32px -32px
+}
+
+.action-icon-arrow-1-se {
+    background-position: -48px -32px
+}
+
+.action-icon-arrow-1-s {
+    background-position: -64px -32px
+}
+
+.action-icon-arrow-1-sw {
+    background-position: -80px -32px
+}
+
+.action-icon-arrow-1-w {
+    background-position: -96px -32px
+}
+
+.action-icon-arrow-1-nw {
+    background-position: -112px -32px
+}
+
+.action-icon-arrow-2-n-s {
+    background-position: -128px -32px
+}
+
+.action-icon-arrow-2-ne-sw {
+    background-position: -144px -32px
+}
+
+.action-icon-arrow-2-e-w {
+    background-position: -160px -32px
+}
+
+.action-icon-arrow-2-se-nw {
+    background-position: -176px -32px
+}
+
+.action-icon-arrowstop-1-n {
+    background-position: -192px -32px
+}
+
+.action-icon-arrowstop-1-e {
+    background-position: -208px -32px
+}
+
+.action-icon-arrowstop-1-s {
+    background-position: -224px -32px
+}
+
+.action-icon-arrowstop-1-w {
+    background-position: -240px -32px
+}
+
+.action-icon-arrowthick-1-n {
+    background-position: 0 -48px
+}
+
+.action-icon-arrowthick-1-ne {
+    background-position: -16px -48px
+}
+
+.action-icon-arrowthick-1-e {
+    background-position: -32px -48px
+}
+
+.action-icon-arrowthick-1-se {
+    background-position: -48px -48px
+}
+
+.action-icon-arrowthick-1-s {
+    background-position: -64px -48px
+}
+
+.action-icon-arrowthick-1-sw {
+    background-position: -80px -48px
+}
+
+.action-icon-arrowthick-1-w {
+    background-position: -96px -48px
+}
+
+.action-icon-arrowthick-1-nw {
+    background-position: -112px -48px
+}
+
+.action-icon-arrowthick-2-n-s {
+    background-position: -128px -48px
+}
+
+.action-icon-arrowthick-2-ne-sw {
+    background-position: -144px -48px
+}
+
+.action-icon-arrowthick-2-e-w {
+    background-position: -160px -48px
+}
+
+.action-icon-arrowthick-2-se-nw {
+    background-position: -176px -48px
+}
+
+.action-icon-arrowthickstop-1-n {
+    background-position: -192px -48px
+}
+
+.action-icon-arrowthickstop-1-e {
+    background-position: -208px -48px
+}
+
+.action-icon-arrowthickstop-1-s {
+    background-position: -224px -48px
+}
+
+.action-icon-arrowthickstop-1-w {
+    background-position: -240px -48px
+}
+
+.action-icon-arrowreturnthick-1-w {
+    background-position: 0 -64px
+}
+
+.action-icon-arrowreturnthick-1-n {
+    background-position: -16px -64px
+}
+
+.action-icon-arrowreturnthick-1-e {
+    background-position: -32px -64px
+}
+
+.action-icon-arrowreturnthick-1-s {
+    background-position: -48px -64px
+}
+
+.action-icon-arrowreturn-1-w {
+    background-position: -64px -64px
+}
+
+.action-icon-arrowreturn-1-n {
+    background-position: -80px -64px
+}
+
+.action-icon-arrowreturn-1-e {
+    background-position: -96px -64px
+}
+
+.action-icon-arrowreturn-1-s {
+    background-position: -112px -64px
+}
+
+.action-icon-arrowrefresh-1-w {
+    background-position: -128px -64px
+}
+
+.action-icon-arrowrefresh-1-n {
+    background-position: -144px -64px
+}
+
+.action-icon-arrowrefresh-1-e {
+    background-position: -160px -64px
+}
+
+.action-icon-arrowrefresh-1-s {
+    background-position: -176px -64px
+}
+
+.action-icon-arrow-4 {
+    background-position: 0 -80px
+}
+
+.action-icon-arrow-4-diag {
+    background-position: -16px -80px
+}
+
+.action-icon-extlink {
+    background-position: -32px -80px
+}
+
+.action-icon-newwin {
+    background-position: -48px -80px
+}
+
+.action-icon-refresh {
+    background-position: -64px -80px
+}
+
+.action-icon-shuffle {
+    background-position: -80px -80px
+}
+
+.action-icon-transfer-e-w {
+    background-position: -96px -80px
+}
+
+.action-icon-transferthick-e-w {
+    background-position: -112px -80px
+}
+
+.action-icon-folder-collapsed {
+    background-position: 0 -96px
+}
+
+.action-icon-folder-open {
+    background-position: -16px -96px
+}
+
+.action-icon-document {
+    background-position: -32px -96px
+}
+
+.action-icon-document-b {
+    background-position: -48px -96px
+}
+
+.action-icon-note {
+    background-position: -64px -96px
+}
+
+.action-icon-mail-closed {
+    background-position: -80px -96px
+}
+
+.action-icon-mail-open {
+    background-position: -96px -96px
+}
+
+.action-icon-suitcase {
+    background-position: -112px -96px
+}
+
+.action-icon-comment {
+    background-position: -128px -96px
+}
+
+.action-icon-person {
+    background-position: -144px -96px
+}
+
+.action-icon-print {
+    background-position: -160px -96px
+}
+
+.action-icon-trash {
+    background-position: -176px -96px
+}
+
+.action-icon-locked {
+    background-position: -192px -96px
+}
+
+.action-icon-unlocked {
+    background-position: -208px -96px
+}
+
+.action-icon-bookmark {
+    background-position: -224px -96px
+}
+
+.action-icon-tag {
+    background-position: -240px -96px
+}
+
+.action-icon-home {
+    background-position: 0 -112px
+}
+
+.action-icon-flag {
+    background-position: -16px -112px
+}
+
+.action-icon-calendar {
+    background-position: -32px -112px
+}
+
+.action-icon-cart {
+    background-position: -48px -112px
+}
+
+.action-icon-pencil {
+    background-position: -64px -112px
+}
+
+.action-icon-clock {
+    background-position: -80px -112px
+}
+
+.action-icon-disk {
+    background-position: -96px -112px
+}
+
+.action-icon-calculator {
+    background-position: -112px -112px
+}
+
+.action-icon-zoomin {
+    background-position: -128px -112px
+}
+
+.action-icon-zoomout {
+    background-position: -144px -112px
+}
+
+.action-icon-search {
+    background-position: -160px -112px
+}
+
+.action-icon-wrench {
+    background-position: -176px -112px
+}
+
+.action-icon-gear {
+    background-position: -192px -112px
+}
+
+.action-icon-heart {
+    background-position: -208px -112px
+}
+
+.action-icon-star {
+    background-position: -224px -112px
+}
+
+.action-icon-link {
+    background-position: -240px -112px
+}
+
+.action-icon-cancel {
+    background-position: 0 -128px
+}
+
+.action-icon-plus {
+    background-position: -16px -128px
+}
+
+.action-icon-plusthick {
+    background-position: -32px -128px
+}
+
+.action-icon-minus {
+    background-position: -48px -128px
+}
+
+.action-icon-minusthick {
+    background-position: -64px -128px
+}
+
+.action-icon-close {
+    background-position: -80px -128px
+}
+
+.action-icon-closethick {
+    background-position: -96px -128px
+}
+
+.action-icon-key {
+    background-position: -112px -128px
+}
+
+.action-icon-lightbulb {
+    background-position: -128px -128px
+}
+
+.action-icon-scissors {
+    background-position: -144px -128px
+}
+
+.action-icon-clipboard {
+    background-position: -160px -128px
+}
+
+.action-icon-copy {
+    background-position: -176px -128px
+}
+
+.action-icon-contact {
+    background-position: -192px -128px
+}
+
+.action-icon-image {
+    background-position: -208px -128px
+}
+
+.action-icon-video {
+    background-position: -224px -128px
+}
+
+.action-icon-script {
+    background-position: -240px -128px
+}
+
+.action-icon-alert {
+    background-position: 0 -144px
+}
+
+.action-icon-info {
+    background-position: -16px -144px
+}
+
+.action-icon-notice {
+    background-position: -32px -144px
+}
+
+.action-icon-help {
+    background-position: -48px -144px
+}
+
+.action-icon-check {
+    background-position: -64px -144px
+}
+
+.action-icon-bullet {
+    background-position: -80px -144px
+}
+
+.action-icon-radio-off {
+    background-position: -96px -144px
+}
+
+.action-icon-radio-on {
+    background-position: -112px -144px
+}
+
+.action-icon-pin-w {
+    background-position: -128px -144px
+}
+
+.action-icon-pin-s {
+    background-position: -144px -144px
+}
+
+.action-icon-play {
+    background-position: 0 -160px
+}
+
+.action-icon-pause {
+    background-position: -16px -160px
+}
+
+.action-icon-seek-next {
+    background-position: -32px -160px
+}
+
+.action-icon-seek-prev {
+    background-position: -48px -160px
+}
+
+.action-icon-seek-end {
+    background-position: -64px -160px
+}
+
+.action-icon-seek-start {
+    background-position: -80px -160px
+}
+
+.action-icon-seek-first {
+    background-position: -80px -160px
+}
+
+.action-icon-stop {
+    background-position: -96px -160px
+}
+
+.action-icon-eject {
+    background-position: -112px -160px
+}
+
+.action-icon-volume-off {
+    background-position: -128px -160px
+}
+
+.action-icon-volume-on {
+    background-position: -144px -160px
+}
+
+.action-icon-power {
+    background-position: 0 -176px
+}
+
+.action-icon-signal-diag {
+    background-position: -16px -176px
+}
+
+.action-icon-signal {
+    background-position: -32px -176px
+}
+
+.action-icon-battery-0 {
+    background-position: -48px -176px
+}
+
+.action-icon-battery-1 {
+    background-position: -64px -176px
+}
+
+.action-icon-battery-2 {
+    background-position: -80px -176px
+}
+
+.action-icon-battery-3 {
+    background-position: -96px -176px
+}
+
+.action-icon-circle-plus {
+    background-position: 0 -192px
+}
+
+.action-icon-circle-minus {
+    background-position: -16px -192px
+}
+
+.action-icon-circle-close {
+    background-position: -32px -192px
+}
+
+.action-icon-circle-triangle-e {
+    background-position: -48px -192px
+}
+
+.action-icon-circle-triangle-s {
+    background-position: -64px -192px
+}
+
+.action-icon-circle-triangle-w {
+    background-position: -80px -192px
+}
+
+.action-icon-circle-triangle-n {
+    background-position: -96px -192px
+}
+
+.action-icon-circle-arrow-e {
+    background-position: -112px -192px
+}
+
+.action-icon-circle-arrow-s {
+    background-position: -128px -192px
+}
+
+.action-icon-circle-arrow-w {
+    background-position: -144px -192px
+}
+
+.action-icon-circle-arrow-n {
+    background-position: -160px -192px
+}
+
+.action-icon-circle-zoomin {
+    background-position: -176px -192px
+}
+
+.action-icon-circle-zoomout {
+    background-position: -192px -192px
+}
+
+.action-icon-circle-check {
+    background-position: -208px -192px
+}
+
+.action-icon-circlesmall-plus {
+    background-position: 0 -208px
+}
+
+.action-icon-circlesmall-minus {
+    background-position: -16px -208px
+}
+
+.action-icon-circlesmall-close {
+    background-position: -32px -208px
+}
+
+.action-icon-squaresmall-plus {
+    background-position: -48px -208px
+}
+
+.action-icon-squaresmall-minus {
+    background-position: -64px -208px
+}
+
+.action-icon-squaresmall-close {
+    background-position: -80px -208px
+}
+
+.action-icon-grip-dotted-vertical {
+    background-position: 0 -224px
+}
+
+.action-icon-grip-dotted-horizontal {
+    background-position: -16px -224px
+}
+
+.action-icon-grip-solid-vertical {
+    background-position: -32px -224px
+}
+
+.action-icon-grip-solid-horizontal {
+    background-position: -48px -224px
+}
+
+.action-icon-gripsmall-diagonal-se {
+    background-position: -64px -224px
+}
+
+.action-icon-grip-diagonal-se {
+    background-position: -80px -224px
+}
+
+.action-icon-io {
+    background-position: -96px -224px
+}
+
+.action-icon-cr {
+    background-position: -110px -224px
+}
+
+.action-icon-dt {
+    background-position: -124px -224px
+}
+
+.action-icon-gear {
+    background-position: -192px -114px
+}
+
+
